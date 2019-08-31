@@ -1,25 +1,35 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }	    
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
+  "name": "Social analytics Tools ",
+  "description": "Extension which tracks the user social life",
+  "version": "1.0",
+  "manifest_version": 2,
+  "icons":{
+    "16": "logo192.png"
+},
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_icon":"logo192.png"
+  },
+  "content_scripts":[{
+    "matches":["http://*/*"],
+    "js":["content.js"]
+  }],
+  "background": {
+    "scripts": [
+      "main.js"
+    ],
+    "persistent": false
+  },
+  "permissions":[
+    "tabs",
+    "activeTab",
+    "http://*/*",
+    "alarms",
+    "background", 
+    "storage", 
+    "notifications",
+    "<all_urls>",
+    "webNavigation"
+  ]
+ 
+  }
