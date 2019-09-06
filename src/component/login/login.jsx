@@ -1,13 +1,27 @@
 import React from "react";
+import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
+
+const initialState={
+  loginOpen:true
+}
 
 export class Login extends React.Component {
   constructor(props) {
-    super(props);
-   }
+    super(props);   
+    this.state=initialState;
+}
 
+changeState=()=>{
+  this.setState({loginOpen:false});
+}
   render() {
+
+
+
     return (
-      <div className="base-container" ref={this.props.containerRef}>
+    <div>
+        {this.state.loginOpen?(
+        <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
         <div className="content">
           <div className="image">
@@ -24,12 +38,24 @@ export class Login extends React.Component {
             </div>
           </div>
         </div>
+          <div>
         <div className="footer">
-          <button type="button" className="btn">
+         <Link to='/submit'> <button type="button" className="btn" onClick={this.changeState}>
             Login
-          </button>
+          </button></Link>
+          </div>
+          <div>
+          <Link to='/register'> <button type="button" className="btn" onClick={this.changeState}>
+            SignUp
+          </button></Link>
         </div>
-      </div>
+        </div>
+        </div>):(
+          null
+        )
+        }
+      </div> 
     );
   }
 }
+export default Login;

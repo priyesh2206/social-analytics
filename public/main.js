@@ -1,16 +1,16 @@
 chrome.runtime.onInstalled.addListener(() => {
-    console.log('onInstalled...');
+    console.log('onInstalled extension ...');
     // create alarm after extension is installed / upgraded
-    chrome.alarms.create('refresh', { periodInMinutes: 1});
+    chrome.alarms.create('refreshing', { periodInMinutes: 1});
   });
   
   chrome.alarms.onAlarm.addListener((alarm) => {
     console.log(alarm.name); // refresh
-    helloWorld();
+    url_Scraper();
   });
 
-  
-  function helloWorld() {
+  //**scrapes the URl of active tab of user**//
+  function url_Scraper() {
     chrome.tabs.query({"active":true,"lastFocusedWindow":true},function(tabs){
         tabURL = tabs[0].url;
         console.log("urls",tabURL);

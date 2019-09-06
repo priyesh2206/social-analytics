@@ -1,20 +1,29 @@
-import React from "react";
+import React  from 'react';
+import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
 
-
+ 
 
 export class Register extends React.Component {
   constructor(props) {
     super(props);
-    this.updateRange = this.updateRange.bind(this);
+    this.state = {value: 0}
+    this.updateRange = this.updateRange.bind(this)
+  }
+  updateRange(event) {
+    this.setState({value: event.target.value});
   }
   
-  updateRange(e) {
-    this.props.updateRange(e.target.value);
-  }
+  
 
   render() {
-    const { range } = this.props;
-    return (
+        return (
+    //   <Roruter>
+        
+    //     <Route path="/" exact render={
+    //    () => {
+    //      return ( <h1>Social Analytic</h1>);
+    //    }
+    //  }/>
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Register</div>
         <div className="content">
@@ -32,28 +41,37 @@ export class Register extends React.Component {
             </div>
             <div className="form-group">
                <input id="range" type="range"
-                 value={range}
+                 value={this.state.value}
                   min="0 hours"
                    max="100 "
                    step="1"
                     onChange={this.updateRange}
                         />
-                   <p><span id="output">{range}</span>Hours</p>
+                   <p><span id="output">{this.state.value}</span>Hours</p>
                    </div>  
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input type="text" name="password" placeholder="password" />
             </div>
-          </div>
+           </div> 
           
         </div>
+        
         <script src="./component/login/main"></script>
         <div className="footer">
-          <button type="button" className="btn">
-            Register
-          </button>
+        
+          
+          <Link to='/login'> <button type="button" className="btn">Register</button></Link>
+           
+          
+          
+          
+          
         </div>
       </div>
-    );
+      // </Router>
+    );    
   }
 }
+
+export default Register;

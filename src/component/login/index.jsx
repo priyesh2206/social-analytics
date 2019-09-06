@@ -1,3 +1,12 @@
 import "./style.scss";
 export { Login } from "./login";
 export { Register } from "./register";
+export { Submit } from "./submit";
+export { myProfile } from "./myProfile";
+export { scoreBoard } from "./scoreBoard";
+export { Graph } from "./graph";
+export { monthlyData } from "./monthlyData";
+export { Profile } from "./profile";
+export { Review } from "./review";
+export { Faq } from "./Faq";
+export { Developer } from "./developer";

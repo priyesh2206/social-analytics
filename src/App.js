@@ -1,80 +1,47 @@
-import React from 'react';
-import './App.css';
-import { Login, Register} from './component/login/index';
-import jquery from './component/login/jquery.txt';
+import React,{Component} from 'react'
+import {BrowserRouter as Router,Route,Link} from "react-router-dom"
+import LoginScreen from '../src/login';
+import { Login, Register, Submit, myProfile, scoreBoard, Graph, monthlyData, Profile, Faq, Review, Developer } from './component/login';
 
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLogginActive: true,
-      rangeVal: 0
-    };
-    this.updateRange = this.updateRange.bind(this);
-  }
+class App extends Component{
   
-  updateRange(val) {
-    this.setState({
-      rangeVal: val
-    })
-  } 
-    
-  
-
-  changeState() {
-    
-    const { isLogginActive } = this.state;
-  
-    
-    if (isLogginActive) {
-    
-      this.rightSide.classList.remove("right");
-      this.rightSide.classList.add("left");
-    } else {
-    
-      this.rightSide.classList.remove("left");
-      this.rightSide.classList.add("right");
-    }
-    
-    this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
-  }
-
-  render() {
-    const { rangeVal } = this.state;
-    const { isLogginActive } = this.state;
-    const current = isLogginActive ? "Register" : "Login";
-    const currentActive = isLogginActive ? "Login" : "Register";
+  render(){
     return (
-      <div className="App">
-        <div className="login">
-          <div className="container" ref={ref => (this.container = ref)}>
-            {isLogginActive && (
-              <Login containerRef={ref => (this.current = ref)} />
-            )}
-            {!isLogginActive && (
-              <Register containerRef={ref => (this.current = ref)} range={rangeVal} updateRange={this.updateRange}/>
-            )}
-          </div>
-          <RightSide current={current} currentActive={currentActive} containerRef={ref => (this.rightSide = ref)} onClick={this.changeState.bind(this)}/>
-          
-        </div>
+
+      <div>
+        <Router>
+      <div>
+        {/* <Login/>  */}
+         <Link  to="/login">LOgin</Link>
+        <Link to ="/register"> register</Link>
+        <Link to="/myprofile"> Scoreboard </Link> 
+        {/* <Link to="/scoreBoard"> Scoreboard </Link>
+        {/* <Link to="/scoreBoard"> Scoreboard </Link>
+        <Link to="/scoreBoard"> Scoreboard </Link>
+        <Link to="/scoreBoard"> Scoreboard </Link>
+        <Link to="/scoreBoard"> Scoreboard </Link>
+        <Link to="/scoreBoard"> Scoreboard </Link> */} */}
+        
       </div>
 
+
+
+        <Route exact path="/login" component={Login}/>
+        <Route  exact path='/register' component={Register} />
+        <Route  exact path='/submit' component={Submit} />
+        <Route  exact path='/myProfile' component={myProfile} />
+        <Route  exact path='/scoreBoard' component={scoreBoard} />
+        <Route  exact path='/graph' component={Graph} />
+        <Route  exact path='/monthlyData' component={monthlyData} />
+        <Route  exact path='/profile' component={Profile} />
+        <Route  exact path='/faq' component={Faq} />
+        <Route  exact path='/review' component={Review} />
+        <Route  exact path='/developer' component={Developer} />
+        </Router>
+      </div>
 
     )
   }
 }
-
- const RightSide = props => {
-    return (
-      <div className="right-side" ref={props.containerRef} onClick={props.onClick}>
-        <div className="inner-container">
-          <div className="text">{props.current}</div>
-        </div>
-      </div>
-      
-    );
-  };
 
 export default App;
