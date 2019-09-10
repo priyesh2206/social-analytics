@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Nav2 from './navbar';
 
 const initialState={
   loginOpen:true
@@ -15,11 +17,11 @@ changeState=()=>{
   this.setState({loginOpen:false});
 }
   render() {
-
-
-
     return (
-    <div>
+    
+  
+   <div>
+  <Nav2 />
         {this.state.loginOpen?(
         <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
@@ -55,6 +57,7 @@ changeState=()=>{
         )
         }
       </div> 
+     
     );
   }
 }

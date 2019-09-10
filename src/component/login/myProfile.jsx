@@ -1,22 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom';
 import { DropdownMenu, MenuItem } from 'react-bootstrap-dropdown-menu';
-
+import UserNav from './userloginnav';
 
 
 
 export class myProfile extends React.Component {
     constructor(props) {
       super(props);
-     
-     
-     
-    }
+      }
 
-   
-
-    render() {
+   render() {
     return (
+      <div>
+        <UserNav />
        <div className="base-container" ref={this.props.containerRef}> 
       <div className="header">DashBoard</div>
       <div className="content">
@@ -40,6 +37,7 @@ export class myProfile extends React.Component {
       <  Link to="/developer"><MenuItem text="DEVELOPERS" /></Link>
       </DropdownMenu>
     
+    </div>
     </div>
     </div>
    );

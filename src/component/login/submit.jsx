@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom';
 import { DropdownMenu, MenuItem } from 'react-bootstrap-dropdown-menu';
+import UserNav from './userloginnav';
 
 export class Submit extends React.Component {
     constructor(props) {
@@ -9,6 +10,9 @@ export class Submit extends React.Component {
     
     render() {
         return (
+          <div>
+            <UserNav />
+        
           <div className="base-container">
           <div className="header">Social Analytics</div>
           <div className="content">
@@ -27,6 +31,7 @@ export class Submit extends React.Component {
       </DropdownMenu>
       </div>
     
+      </div>
       </div>
        );
     }
