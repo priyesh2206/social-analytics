@@ -15,12 +15,6 @@ class App extends Component{
          <Link  to="/login">LOgin</Link>
         <Link to ="/register"> register</Link>
         <Link to="/myprofile"> Scoreboard </Link> 
-        {/* <Link to="/scoreBoard"> Scoreboard </Link>
-        {/* <Link to="/scoreBoard"> Scoreboard </Link>
-        <Link to="/scoreBoard"> Scoreboard </Link>
-        <Link to="/scoreBoard"> Scoreboard </Link>
-        <Link to="/scoreBoard"> Scoreboard </Link>
-        <Link to="/scoreBoard"> Scoreboard </Link> */} */}
         
       </div>
 
