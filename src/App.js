@@ -9,28 +9,13 @@ class App extends Component{
   
   render(){
     return (
-<<<<<<< HEAD
-
-      <div>
-        <Router>
-      <div>
-        {/* <Login/>  */}
-         <Link  to="/login">LOgin</Link>
-        <Link to ="/register"> register</Link>
-        <Link to="/myprofile"> Scoreboard </Link> 
-        
-      </div>
 
 
-
-=======
-      
       <Router>
        
       
    <div>
         <Route exact path="/" component={Welcome}/>
->>>>>>> 1f9d7c5b91c91a23020d88b833280ef21d5190c3
         <Route exact path="/login" component={Login}/>
         <Route  exact path='/register' component={Register} />
         <Route  exact path='/submit' component={Submit} />
