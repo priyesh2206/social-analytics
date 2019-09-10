@@ -1,6 +1,6 @@
 import React  from 'react';
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
-
+import Nav2 from './navbar';
  
 
 export class Register extends React.Component {
@@ -17,13 +17,8 @@ export class Register extends React.Component {
 
   render() {
         return (
-    //   <Roruter>
-        
-    //     <Route path="/" exact render={
-    //    () => {
-    //      return ( <h1>Social Analytic</h1>);
-    //    }
-    //  }/>
+       <div>
+         <Nav2 />
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Register</div>
         <div className="content">
@@ -69,7 +64,7 @@ export class Register extends React.Component {
           
         </div>
       </div>
-      // </Router>
+      </div>
     );    
   }
 }

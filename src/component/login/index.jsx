@@ -10,3 +10,5 @@ export { Profile } from "./profile";
 export { Review } from "./review";
 export { Faq } from "./Faq";
 export { Developer } from "./developer";
+export { Nav2 } from "./navbar";
+export { UserNav } from "./userloginnav";

@@ -1,5 +1,7 @@
 import React from 'react';
 import { DropdownMenu, MenuItem } from 'react-bootstrap-dropdown-menu';
+import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom';
+import UserNav from './userloginnav';
 
 export class Review extends React.Component {
     constructor(props) {
@@ -8,6 +10,8 @@ export class Review extends React.Component {
 
      render() {
         return (
+          <div>
+         <UserNav />
           <div className="base-container">
           <div className="header">Social Analytics</div>
           <div className="header1">REVIEW</div>
@@ -29,6 +33,7 @@ export class Review extends React.Component {
         <MenuItem text="LOGOUT" location="/" />
         <MenuItem text="DEVELOPERS" location="/developer" />
       </DropdownMenu>
+      </div>
       </div>
        );
         }
