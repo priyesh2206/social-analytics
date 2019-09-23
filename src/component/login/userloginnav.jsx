@@ -7,16 +7,6 @@ export class  UserNav extends React.Component {
     render() {
 return(
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    <Link to='/login'><a className="navbar-brand">LOGIN</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-  
-    <Link to='/register'><a className="navbar-brand">REGISTER</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
     <Link to='/submit'><a className="navbar-brand">SUBMIT</a></Link>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
@@ -62,7 +52,7 @@ return(
       <span className="navbar-toggler-icon"></span>
     </button>
 
-    <Link to='/login'><a className="navbar-brand">LOGOUT</a></Link>
+    <Link to='/login' onClick={this.props.makeMeLoggedIn}><a className="navbar-brand">LOGOUT</a></Link>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

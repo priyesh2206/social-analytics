@@ -18,7 +18,7 @@ export class Register extends React.Component {
   render() {
         return (
        <div>
-         <Nav2 />
+         {/* <Nav2 /> */}
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Register</div>
         <div className="content">

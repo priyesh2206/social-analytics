@@ -11,7 +11,7 @@ export class Submit extends React.Component {
     render() {
         return (
           <div>
-            <UserNav />
+            <UserNav  makeMeLoggedIn={this.props.makeMeLoggedIn}/>
         
           <div className="base-container">
           <div className="header">Social Analytics</div>

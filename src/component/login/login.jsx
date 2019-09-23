@@ -13,15 +13,17 @@ export class Login extends React.Component {
     this.state=initialState;
 }
 
+  
+
 changeState=()=>{
-  this.setState({loginOpen:false});
+  this.props.makeMeLoggedIn();
 }
   render() {
     return (
     
   
    <div>
-  <Nav2 />
+  
         {this.state.loginOpen?(
         <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
