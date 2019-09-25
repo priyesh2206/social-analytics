@@ -1,63 +1,30 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 export class  UserNav extends React.Component {
 
 
     render() {
 return(
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    <Link to='/submit'><a className="navbar-brand">SUBMIT</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/myProfile'><a className="navbar-brand">MYPROFILE</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/scoreboard'><a className="navbar-brand">SCOREBOARD</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/graph'><a className="navbar-brand">GRAPH</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/monthlyData'><a className="navbar-brand">MONTHLY DATA</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/profile'><a className="navbar-brand">PROFILE</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/faq'><a className="navbar-brand">FAQ</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/review'><a className="navbar-brand">REVIEW</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/developer'><a className="navbar-brand">DEVELOPER</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-
-    <Link to='/login' onClick={this.props.makeMeLoggedIn}><a className="navbar-brand">LOGOUT</a></Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    </nav>
-
+  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="mr-auto">
+      <Link to ="/submit">SUBMIT</Link>
+      <Link to ="/myProfile">MyProfile</Link>
+      <Link to ="/scoreBoard">SCOREBOARD</Link>
+      <Link to ="/graph">GRAPH</Link>
+      <Link to ="/monthlyData">MonthlyData</Link>
+      <Link to ="/profile">PROFILE</Link>
+      <Link to ="/Faq">FAQ</Link>
+      <Link to ="/review">REVIEW</Link>
+      <Link to ="/developer">DEVELOPER</Link>
+      <Link to ="/">LOGOUT</Link>
+    </Nav>
+  </Navbar.Collapse>
+</Navbar>
 );
 }
 }

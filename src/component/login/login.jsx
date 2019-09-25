@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav2 from './navbar';
 
 const initialState={
