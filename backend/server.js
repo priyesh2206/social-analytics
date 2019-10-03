@@ -2,12 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require("passport");
+const users = require("./routes/api/user");
 
 
 require('dotenv').config();
 
 const app = express();
-const port =process.env.PORT || 5000;  //Checking PORT 
+const port =process.env.PORT || '4000' ;  //Checking PORT 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,3 +40,15 @@ app.listen(port ,() => {
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
+
+//*****/jwt or Passport Middleware/*****//
+app.use(passport.initialize());
+
+
+//*****/config the tokens/*****/
+
+require("./config/passport")(passport);
+
+
+//*****/Routes/*****//
+app.use("/api/users",users);

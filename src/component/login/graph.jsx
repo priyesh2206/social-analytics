@@ -10,6 +10,8 @@ export class Graph extends React.Component {
      render() {
         return (
           <div>
+             { this.props.isUserLoggedIn ?
+          <div>
           <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/>
           <div className="base-container">
           <div className="header">Social Analytics</div>
@@ -18,20 +20,20 @@ export class Graph extends React.Component {
           <div className="image">
             <img src={require('../../login.png')} />
             <ul>
-          <h1>NAME:</h1>
-          <h1>SCORED:</h1>
-          <h1>LIMIT:</h1>
-          
-          
-              <li>Pie Graph</li>
-              <li>Line Graph</li>
-          </ul>
+               <h1>NAME:</h1>
+               <h1>SCORED:</h1>
+               <h1>LIMIT:</h1>
+               <li>Pie Graph</li>
+               <li>Line Graph</li>
+            </ul>
           </div>
         </div>
         <div className="image">
         <img src="" alt="User Image" />
         </div>
       </div>
+    </div>
+    :null}
     </div>
        );
         }

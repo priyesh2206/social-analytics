@@ -8,7 +8,11 @@ export class Submit extends React.Component {
      }
     
     render() {
+      console.log(this.props)
         return (
+
+          <div>
+          { this.props.isUserLoggedIn ?
           <div>
             <UserNav  makeMeLoggedIn={this.props.makeMeLoggedIn}/>
         
@@ -17,12 +21,15 @@ export class Submit extends React.Component {
           <div className="content">
           <div className="image">
             <img src={require('../../login.png')} />
-            <Link to='/myProfile'> <button type="button" className="btn">SUBMIT</button></Link>
+            <Link to='/myProfile'><button type="button" className="btn">SUBMIT</button></Link>
           <button type="button" className="btn">CANCEL</button>
           </div>
         </div>
        </div>
       </div>
+      :null
+    }
+    </div>
        );
     }
 }

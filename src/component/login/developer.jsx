@@ -9,21 +9,24 @@ export class Developer extends React.Component {
      render() {
         return (
           <div>
-          <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/>
-          <div className="base-container">
-          <div className="header">Social Analytics</div>
-          <div className="header1">DEVELOPER</div>
-          <div className="content">
-          <div className="image">
-            <img src={require('../../login.png')} />
-            
-          
+             { this.props.isUserLoggedIn ?
+             <div>
+                  <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/>
+             <div className="base-container">
+                 <div className="header">Social Analytics</div>
+                   <div className="header1">DEVELOPER</div>
+                     <div className="content">
+                        <div className="image">
+                            <img src={require('../../login.png')} />
+                        </div>
+                     </div>
+             </div>
+             </div>
+               :null
+              }
           </div>
-        </div>
-     </div>
-  </div>
-       );
-        }
+         );
+      }
     }   
 
 export default Developer;

@@ -10,6 +10,8 @@ export class Faq extends React.Component {
      render() {
         return (
           <div>
+             { this.props.isUserLoggedIn ?
+          <div>
           <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/>
           <div className="base-container">
           <div className="header">Social Analytics</div>
@@ -17,12 +19,14 @@ export class Faq extends React.Component {
           <div className="content">
           <div className="image">
             <img src={require('../../login.png')} />
-        </div>
-        </div>
-        <div className="image">
-        <img src="" alt="User Image" />
-        </div>
+          </div>
+          </div>
+          <div className="image">
+               <img src="" alt="User Image" />
+          </div>
       </div>
+    </div>
+    :null}
     </div>
        );
       }

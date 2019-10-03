@@ -10,6 +10,8 @@ export class ScoreBoard extends React.Component {
      render() {
         return (
           <div>
+             { this.props.isUserLoggedIn ?
+          <div>
           <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/>
           <div className="base-container">
           <div className="header">Social Analytics</div>
@@ -30,8 +32,11 @@ export class ScoreBoard extends React.Component {
         </div>
       </div>
     </div>
+    :null
+    }
+</div>
        );
-        }
+      }
     }   
 
 export default ScoreBoard;

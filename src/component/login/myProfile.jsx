@@ -12,6 +12,8 @@ export class MyProfile extends React.Component {
    render() {
     return (
       <div>
+         { this.props.isUserLoggedIn ?
+      <div>
         <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn} />
        <div className="base-container" ref={this.props.containerRef}> 
       <div className="header">DashBoard</div>
@@ -28,6 +30,9 @@ export class MyProfile extends React.Component {
     </div>
     </div>
     </div>
+    :null
+         }
+         </div>
    );
     }
 }

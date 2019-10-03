@@ -1,18 +1,56 @@
 import React  from 'react';
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
-import Nav2 from './navbar';
+import axios from 'axios';
+
  
 
 export class Register extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {valueHour: 0, valueMin: 0};
-    this.updateRange = this.updateRange.bind(this);
-    this.updateRangeMin = this.updateRangeMin.bind(this);
+    // this.updateRange = this.updateRange.bind(this);
+    // this.updateRangeMin = this.updateRangeMin.bind(this);
     this.state = {file: '',imagePreviewUrl: ''};
+    this.state = {
+      username:"",
+      email:"",
+      Age:"",
+      password:"",
+      password2:"",
+      Errors:{}
+    }
   }
-
-  _handleSubmit(e) {
+//*****/fetching User Inputs/*****//
+  changeusername=(event)=>{
+    this.setState({username:event.target.value});
+  }
+  changeemail=(event)=>{
+    this.setState({email:event.target.value});
+  }
+  changeAge=(event)=>{
+    console.log(event)
+    this.setState({Age:event.target.value});
+  }
+  changepassword=(event)=>{
+    this.setState({password:event.target.value});
+  }
+  changepassword2=(event)=>{
+    this.setState({password2:event.target.value});
+  }
+ //*****/create User/*****/
+  onSubmit = e => {
+   const newUser = {
+     username:this.state.username,
+     email:this.state.email,
+     Age:this.state.Age,
+     password:this.state.password,
+     password2:this.state.password2
+    }
+    console.log(newUser);
+    axios.post("http://localhost:4000/api/users/register",newUser).then(data=>{
+      console.log("user Added Successfully");
+    })
+  };
+  _handleSubmit(e){
     e.preventDefault();
     console.log('handle uploading-', this.state.file);
   }
@@ -32,97 +70,111 @@ export class Register extends React.Component {
     reader.readAsDataURL(file)
   }
 
-  updateRange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  updateRangeMin(event) {
-    this.setState({valueMin: event.target.value});
-  }
-  
-  
-
   render() {
+       const {Errors} = this.state;
        let {imagePreviewUrl} = this.state;
        let $imagePreview = null;
        if (imagePreviewUrl) {
-         $imagePreview = (<img src={imagePreviewUrl} />);
-       } else {
-         $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-       }
-         return (
-       <div>
-         {/* <Nav2 /> */}
-      <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Register</div>
-        <div className="content">
-          <div className="image">
-          <img src={require('../../register.png')} />
-          </div>
-          <div className="form">
-          <div className="form-group">
-        <form onSubmit={(e)=>this._handleSubmit(e)}>
-          <input className="fileInput" 
-            type="file" 
-            onChange={(e)=>this._handleImageChange(e)} />
-          <button className="submitButton" 
-            type="submit" 
-            onClick={(e)=>this._handleSubmit(e)}>Upload Image
-            </button>
-        </form>
-        <div className="imgPreview">
-          {$imagePreview}
-        </div>
-     </div>
-              <div className="form-group">
+              $imagePreview = (<img src={imagePreviewUrl} />);
+            } else {
+              $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+            }
+  return (
+     <div>
+          <div className="base-container" ref={this.props.containerRef}>
+             <div className="header">Register</div>
+                  <div className="content">
+                   <div className="image">
+                       <img src={require('../../register.png')} />
+                   </div>
+                   <div >
+                      <p>
+                        Already Have Account? <Link to ='/login'>LogIn</Link>
+                      </p>
+                   </div>
+                   {/* Image Uploader */}
+                   <div className="form">
+                     <div className="form-group">
+                      <form onSubmit={(e)=>this._handleSubmit(e)}>
+                        <input className="fileInput" 
+                              type="file" 
+                              onChange={(e)=>this._handleImageChange(e)}
+                        />
+                        <button className="submitButton" 
+                          type="submit" 
+                          onClick={(e)=>this._handleSubmit(e)}>Upload Image
+                        </button>
+                      </form>
+                      {/* Preview of Image */}
+                      <div className="imgPreview" >
+                            {$imagePreview}
+                      </div>
+                   </div>
+       {/* register input Fileds */}
+       <form onValidate onSubmit={this.onSubmit}>
+       <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" />
-            </div>
-            <div className="form-group">
+              <input 
+                  onChange={this.changeusername}
+                  error= {Errors.username}
+                  type="text" 
+                  name="username" 
+                  placeholder="username" 
+              />
+       </div>
+        <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="email" />
-            </div>
-            <div className="form-group">
-               <input id="range" type="range"
-                 value={this.state.value}
-                  min="0 hours"
-                   max="100 "
-                   step="1"
-                    onChange={this.updateRange}
-                        />
-                   <p><span id="output">{this.state.value}</span>Hours</p>
-                   </div>  
-                   <div className="form-group">
-               <input id="range" type="range"
-                 valueMin={this.state.value}
-                  min="0 minutes"
-                   max="100 "
-                   step="1"
-                    onChange={this.updateRangeMin}
-                        />
-                   <p><span id="output">{this.state.valueMin}</span>Minutes</p>
-                   </div>  
-            <div className="form-group">
+              <input 
+                  onChange={this.changeemail}
+                  error={Errors.email}
+                  type="text" 
+                  name="email" 
+                  placeholder="email" 
+              />
+        </div>
+        <div className="form-group">
+              <label htmlFor="Age">Age</label>
+              <input 
+                  onChange={this.changeAge}
+                  type="text" 
+                  name="age" 
+                  placeholder="Age" 
+              />
+        </div>
+        
+        <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="text" name="password" placeholder="password" />
-            </div>
-           </div> 
-          
+              <input 
+                  onChange = {this.changepassword}
+                  error = {Errors.password}
+                  type="text" 
+                  name="password" 
+                  placeholder="password" 
+              />
         </div>
-        
-        <script src="./component/login/main"></script>
-        <div className="footer">
-        
-          
-          <Link to='/login'> <button type="button" className="btn">Register</button></Link>
-           
-          
-          
-          
-          
+        <div className="form-group">
+              <label htmlFor="password2">Confirm-Password</label>
+              <input
+                  onChange = {this.changepassword2}
+                  error = {Errors.password2}
+                  type="text" 
+                  name="password2" 
+                  placeholder="Re-password" 
+              />
         </div>
+        </form>
       </div>
-      </div>
+    </div>    
+    <script src="./component/login/main"></script>
+    <div className="footer">
+         <Link to='/login'> 
+               <button type="button" className="btn" onClick={this.onSubmit}>
+                 Register
+               </button>
+         </Link>
+    </div>
+  </div>
+</div>
     );    
   }
 }

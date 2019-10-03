@@ -21,7 +21,7 @@ return(
       <Link to ="/Faq">FAQ</Link>
       <Link to ="/review">REVIEW</Link>
       <Link to ="/developer">DEVELOPER</Link>
-      <Link to ="/">LOGOUT</Link>
+      <Link to ="/welcome">LOGOUT</Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>

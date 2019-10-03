@@ -10,6 +10,8 @@ export class Profile extends React.Component {
      render() {
         return (
           <div>
+             { this.props.isUserLoggedIn ?
+          <div>
          <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/>
           <div className="base-container">
           <div className="header">Social Analytics</div>
@@ -29,6 +31,9 @@ export class Profile extends React.Component {
         <img src="" alt="User Image" />
         </div>
       </div>
+    </div>
+    :null
+    }
     </div>
        );
         }
