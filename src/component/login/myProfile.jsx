@@ -14,7 +14,6 @@ export class MyProfile extends React.Component {
       <div>
          { this.props.isUserLoggedIn ?
       <div>
-        <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn} />
        <div className="base-container" ref={this.props.containerRef}> 
       <div className="header">DashBoard</div>
       <div className="content">

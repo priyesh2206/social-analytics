@@ -12,7 +12,6 @@ export class Faq extends React.Component {
           <div>
              { this.props.isUserLoggedIn ?
           <div>
-          <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/>
           <div className="base-container">
           <div className="header">Social Analytics</div>
           <div className="header1">FAQs</div>

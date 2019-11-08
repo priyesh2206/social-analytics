@@ -48,6 +48,9 @@ export class Register extends React.Component {
     console.log(newUser);
     axios.post("http://localhost:4000/api/users/register",newUser).then(data=>{
       console.log("user Added Successfully");
+      const {username,Age} = this.state;
+      localStorage.setItem('username',username);
+      localStorage.setItem('Age',Age);
     })
   };
   _handleSubmit(e){

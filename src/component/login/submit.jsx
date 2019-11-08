@@ -14,8 +14,6 @@ export class Submit extends React.Component {
           <div>
           { this.props.isUserLoggedIn ?
           <div>
-            <UserNav  makeMeLoggedIn={this.props.makeMeLoggedIn}/>
-        
           <div className="base-container">
           <div className="header">Social Analytics</div>
           <div className="content">

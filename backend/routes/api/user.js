@@ -92,6 +92,15 @@ router.post('/login',(req,res) =>{
  });
 });
 
+router.get('/age/:username', function(req, res){
+	User.find({username:req.params.username}, function(err, docs){
+		if(err) res.json(err);
+    else  { 
+      console.log(docs)
+      return res.json({Age:docs[0].Age});}
+	});
+});
+
 
 module.exports = router;
 

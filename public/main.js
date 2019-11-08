@@ -1,3 +1,5 @@
+
+
 //***********//BACKGROUND PAGE OF CHRONME EXTESION//*****************//
 chrome.runtime.onInstalled.addListener(() => {
     console.log('onInstalled extension ...');
@@ -7,8 +9,9 @@ chrome.runtime.onInstalled.addListener(() => {
   
 chrome.alarms.onAlarm.addListener((alarm) => {
     console.log(alarm.name);
-    url_Scraper();
-    Timer();
+    //url_Scraper();
+    //Timer();
+    getAge();
   });
 
 //*****/scrapes the URl of active tab of user/*****//
@@ -16,7 +19,7 @@ function url_Scraper() {
     chrome.tabs.query({"active":true,"lastFocusedWindow":true},function(tabs){
         tabURL = tabs[0].url;
         console.log("urls",tabURL);
-    })
+      })
   }
 
 //*****/TIMER for user/*****//
@@ -52,4 +55,13 @@ function time_Cal() {
 //*****/Statring time Fuction/*****//
 function start_Timmer(){
    t = setTimeout(time_Cal,1000);
-  }
+ }
+
+ const getAge=()=>{
+  console.log(localStorage.getItem('userName'))
+  if(localStorage.getItem('userName')!=null)
+  fetch(`http://localhost:4000/api/users/age/${localStorage.getItem('userName')}`).then(res=>res.json()).then(data=>console.log(data))
+
+ }
+ 
+ 

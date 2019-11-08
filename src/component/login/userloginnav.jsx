@@ -5,7 +5,11 @@ import Nav from 'react-bootstrap/Nav';
 
 export class  UserNav extends React.Component {
 
-
+  logOut=()=>{
+    localStorage.setItem('isLoggedIn',false);
+    localStorage.setItem('userName',null);
+    this.props.makeMeLoggedIn();
+  }
     render() {
 return(
   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -21,7 +25,7 @@ return(
       <Link to ="/Faq">FAQ</Link>
       <Link to ="/review">REVIEW</Link>
       <Link to ="/developer">DEVELOPER</Link>
-      <Link to ="/welcome">LOGOUT</Link>
+      <button to ="/welcome" onClick={this.logOut}>LOGOUT</button>
     </Nav>
   </Navbar.Collapse>
 </Navbar>

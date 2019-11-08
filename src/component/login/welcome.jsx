@@ -1,5 +1,7 @@
 import React from 'react';
 import Nav2 from './navbar';
+import Submit from './submit'
+import UserNav from './userloginnav'
 
 export class  Welcome extends React.Component {
 
@@ -7,13 +9,25 @@ export class  Welcome extends React.Component {
         super(props);
     }
 
-    render() {
-        return(
-                <div>
+    getComponent=()=>{
+        
+        if(localStorage.getItem('isLoggedIn')=="true"){
+            return <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/> 
+        }
+        else{
+            return( 
+                        <div>
                         <Nav2/>
                         <h1> WElcome to our extension</h1>
-                </div>
-
+                        </div>
+            )
+        }
+    }
+    render() {
+        return(
+            <div>
+                {this.getComponent()}
+            </div>
             );
     }       
 }

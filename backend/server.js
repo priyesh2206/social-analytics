@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require("passport");
 const users = require("./routes/api/user");
-
+const User = require('./model/user');
 
 require('dotenv').config();
 
@@ -37,9 +37,6 @@ app.listen(port ,() => {
  console.log(`port is running on the port:${port}`);
 });
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
 
 //*****/jwt or Passport Middleware/*****//
 app.use(passport.initialize());
@@ -52,3 +49,5 @@ require("./config/passport")(passport);
 
 //*****/Routes/*****//
 app.use("/api/users",users);
+
+

@@ -24,7 +24,10 @@ changeState=()=>{
   console.log(this.state)
   axios.post('http://localhost:4000/api/users/login',fD).then(data=>{
     if(data.data.success==true){
+      localStorage.setItem('isLoggedIn',true);
+      localStorage.setItem('userName',fD.username)
       this.props.makeMeLoggedIn();
+      
     }
   })
   
