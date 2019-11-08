@@ -14,6 +14,9 @@
     "matches":["http://*/*"],
     "js":["content.js"]
   }],
+  "web_accessible_resources": [
+    "main.js"
+  ],
   "background": {
     "scripts": [
       "main.js"
@@ -21,7 +24,7 @@
     "persistent": false
   },
   "permissions":[
-    "tabs",
+    "tabs", 
     "activeTab",
     "http://*/*",
     "alarms",
@@ -30,6 +33,7 @@
     "notifications",
     "<all_urls>",
     "webNavigation"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' 'sha256-Dwjrzewm2ZmRDbdjG6Mq+Suag3xPqdOQtH9zbMxbiEE='; object-src 'self'"
  
   }

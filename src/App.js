@@ -1,80 +1,66 @@
-import React from 'react';
-import './App.css';
-import { Login, Register} from './component/login/index';
-import jquery from './component/login/jquery.txt';
+import React,{Component} from 'react'
+import {BrowserRouter as Router,Route,Link} from "react-router-dom"
+import { Login, Register, Submit, MyProfile, ScoreBoard, Graph, MonthlyData, Profile, Faq, Review, Developer, Nav2 } from './component/login/index';
 
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLogginActive: true,
-      rangeVal: 0
-    };
-    this.updateRange = this.updateRange.bind(this);
+import Welcome from './component/login/welcome';
+
+if(localStorage.getItem('isLoggedIn')==null)
+localStorage.setItem('isLoggedIn',false);
+
+const getState=()=>{
+  if(localStorage.getItem('isLoggedIn')=="false"){
+    return false;
   }
-  
-  updateRange(val) {
-    this.setState({
-      rangeVal: val
-    })
-  } 
-    
-  
-
-  changeState() {
-    
-    const { isLogginActive } = this.state;
-  
-    
-    if (isLogginActive) {
-    
-      this.rightSide.classList.remove("right");
-      this.rightSide.classList.add("left");
-    } else {
-    
-      this.rightSide.classList.remove("left");
-      this.rightSide.classList.add("right");
-    }
-    
-    this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
-  }
-
-  render() {
-    const { rangeVal } = this.state;
-    const { isLogginActive } = this.state;
-    const current = isLogginActive ? "Register" : "Login";
-    const currentActive = isLogginActive ? "Login" : "Register";
-    return (
-      <div className="App">
-        <div className="login">
-          <div className="container" ref={ref => (this.container = ref)}>
-            {isLogginActive && (
-              <Login containerRef={ref => (this.current = ref)} />
-            )}
-            {!isLogginActive && (
-              <Register containerRef={ref => (this.current = ref)} range={rangeVal} updateRange={this.updateRange}/>
-            )}
-          </div>
-          <RightSide current={current} currentActive={currentActive} containerRef={ref => (this.rightSide = ref)} onClick={this.changeState.bind(this)}/>
-          
-        </div>
-      </div>
-
-
-    )
+  else{
+    return true;
   }
 }
+const initialState={
+  isUserLoggedIn:getState()
+}
 
- const RightSide = props => {
+
+class App extends Component{
+  
+  constructor(props){
+    super(props);
+  
+    this.state=initialState
+  }
+
+  
+  makeMeLoggedIn=()=>{
+    this.setState({isUserLoggedIn:getState()});
+  }
+
+  render(){
+    console.log(this.state.isUserLoggedIn);
     return (
-      <div className="right-side" ref={props.containerRef} onClick={props.onClick}>
-        <div className="inner-container">
-          <div className="text">{props.current}</div>
-        </div>
-      </div>
-      
+      <Router>
+              <div>
+                <Welcome makeMeLoggedIn={this.makeMeLoggedIn} /> 
+              </div>
+
+              <div>
+                    <Route  exact path="/welcome" component={()=><Welcome makeMeLoggedIn={this.makeMeLoggedIn}/>}/>
+                    <Route  exact path="/login" component={()=><Login  makeMeLoggedIn={this.makeMeLoggedIn}/>}/>
+                    <Route  exact path='/register' component={()=><Register makeMeLoggedIn={this.makeMeLoggedIn}/>} />
+                    <Route  exact path='/submit' component={()=><Submit makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn}/>} />
+                    <Route  exact path='/myProfile' component={()=><MyProfile makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn}/>} />
+                    <Route  exact path='/scoreBoard' component={()=><ScoreBoard makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn} /> } />
+                    <Route  exact path='/graph' component={()=><Graph makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn} /> } />
+                    <Route  exact path='/monthlyData' component={()=><MonthlyData makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn}/> } />
+                    <Route  exact path='/profile' component={()=><Profile makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn} /> } />
+                    <Route  exact path='/faq' component={()=><Faq makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn}/> } />
+                    <Route  exact path='/review' component={()=><Review makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn} /> } />
+                    <Route  exact path='/developer' component={()=><Developer makeMeLoggedIn={this.makeMeLoggedIn} isUserLoggedIn={this.state.isUserLoggedIn} /> } />
+                  
+              </div>
+      </Router>
+
     );
-  };
+   }
+}
 
 export default App;
