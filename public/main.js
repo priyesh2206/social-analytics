@@ -1,9 +1,3 @@
-//userFlag=localStorage.getItem('isLoggedIn');
-
-//if(userFlag == true)
-chrome.app.runtime.onLaunched.addListener(()=>{
-  console.log(localStorage.getItem('isLoggedIn'))
-})
 //***********//BACKGROUND PAGE OF CHRONME EXTESION//*****************//
 chrome.runtime.onInstalled.addListener(() => {
   console.log('onInstalled extension ...');
@@ -13,8 +7,11 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   console.log(alarm.name);
+  UserAge=localStorage.getItem('isLoggedIn');
+  if(UserAge == true){
   url_Scraper();
   getAge();
+  }
 });
 //*****/scrapes the URl of active tab of user/*****//
 function url_Scraper() {
@@ -62,7 +59,7 @@ function start_Timmer(){
  }
 
  const getAge=()=>{
-  console.log(localStorage.getItem('userName'))
+  console.log("UserName",localStorage.getItem('userName'))
   if(localStorage.getItem('userName')!=null)
   fetch(`http://localhost:4000/api/users/age/${localStorage.getItem('userName')}`).then(res=>res.json()).then(data=>ageTimer(data.Age));
 }
@@ -73,7 +70,6 @@ const ageTimer=(age)=>{
     Timer();
     if(hours>=2){
       stop_timmer()
-
     }
 
   }
