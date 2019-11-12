@@ -7,12 +7,21 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   console.log(alarm.name);
-  UserAge=localStorage.getItem('isLoggedIn');
-  if(UserAge == true){
-  url_Scraper();
-  getAge();
-  }
+  userFlag=localStorage.getItem('isLoggedIn');
+  login_Checker();
 });
+//*****/Login Checker/*****//
+login_Checker=()=>{
+  console.log("Flag",userFlag);
+  if(userFlag == "true"){
+    url_Scraper();//scraping th url
+    getAge();//Fetch the age
+  }
+  else{
+        console.log("plz login");
+      }
+}
+
 //*****/scrapes the URl of active tab of user/*****//
 function url_Scraper() {
   chrome.tabs.query({"active":true,"lastFocusedWindow":true},function(tabs){
