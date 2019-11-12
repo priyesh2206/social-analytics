@@ -53,36 +53,11 @@ export class Register extends React.Component {
       localStorage.setItem('Age',Age);
     })
   };
-  _handleSubmit(e){
-    e.preventDefault();
-    console.log('handle uploading-', this.state.file);
-  }
 
-  _handleImageChange(e) {
-    e.preventDefault();
-
-    let reader = new FileReader();
-    let file = e.target.files[0];
-
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      });
-    }
-    reader.readAsDataURL(file)
-  }
-
-  render() {
+      render() {
        const {Errors} = this.state;
-       let {imagePreviewUrl} = this.state;
-       let $imagePreview = null;
-       if (imagePreviewUrl) {
-              $imagePreview = (<img src={imagePreviewUrl} />);
-            } else {
-              $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-            }
-  return (
+       
+return (
      <div>
           <div className="base-container" ref={this.props.containerRef}>
              <div className="header">Register</div>
@@ -95,25 +70,8 @@ export class Register extends React.Component {
                         Already Have Account? <Link to ='/login'>LogIn</Link>
                       </p>
                    </div>
-                   {/* Image Uploader */}
-                   <div className="form">
-                     <div className="form-group">
-                      <form onSubmit={(e)=>this._handleSubmit(e)}>
-                        <input className="fileInput" 
-                              type="file" 
-                              onChange={(e)=>this._handleImageChange(e)}
-                        />
-                        <button className="submitButton" 
-                          type="submit" 
-                          onClick={(e)=>this._handleSubmit(e)}>Upload Image
-                        </button>
-                      </form>
-                      {/* Preview of Image */}
-                      <div className="imgPreview" >
-                            {$imagePreview}
-                      </div>
-                   </div>
-       {/* register input Fileds */}
+                    <div className="form">
+         {/* register input Fileds */}
        <form onValidate onSubmit={this.onSubmit}>
        <div className="form-group">
               <label htmlFor="username">Username</label>
