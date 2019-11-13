@@ -9,6 +9,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   console.log(alarm.name);
   userFlag=localStorage.getItem('isLoggedIn');
   login_Checker();
+  logout_Checker();
 });
 //*****/Login Checker/*****//
 login_Checker=()=>{
@@ -18,7 +19,7 @@ login_Checker=()=>{
     getAge();//Fetch the age
   }
   else{
-        console.log("plz login");
+        console.log("please login");
       }
 }
 
@@ -74,12 +75,54 @@ function start_Timmer(){
 }
 
 const ageTimer=(age)=>{
-  if(age >=25 || age <=36){
+  if(age >=11 || age <=16){
     console.log("I am Between 11-16");
     Timer();
     if(hours>=2){
       stop_timmer()
     }
+}
+else if(age >=17 || age <=24){
+  console.log("I am between 17-24");
+  Timer();
+  if(hours >=6){
+    stop_timmer();
+  }
+}
+else if(age>=25 || age <= 40){
+  console.log("I am between 24-40 ");
+  Timer();
+  if(hours>=12){
+    stop_timmer();
+  }
+}
+else if(age >=41 || age <=60){
+  console.log("I am between 40-60");
+  Timer();
+  if(hours>=9){
+    stop_timmer();
+  }
+}
+else if(age>=61){
+  console.log("I am 60 or above");
+  Timer();
+   if(hours>=5){
+     stop_timmer();
+   }
+}
+}
 
+logout_Checker=()=>{
+  console.log("logout signal");
+  if(userFlag == "false"){
+    if(minutes == 0 || hours ==0){
+      console.log("dosent open any social decide yet!!")
+    }else{
+    localStorage.setItem("minutes",minutes);
+    localStorage.setItem("hours",hours);
+     }
+  }
+  else{
+    console.log("user is still login");
   }
 }
