@@ -1,9 +1,3 @@
-//userFlag=localStorage.getItem('isLoggedIn');
-
-//if(userFlag == true)
-chrome.app.runtime.onLaunched.addListener(()=>{
-  console.log(localStorage.getItem('isLoggedIn'))
-})
 //***********//BACKGROUND PAGE OF CHRONME EXTESION//*****************//
 chrome.runtime.onInstalled.addListener(() => {
   console.log('onInstalled extension ...');
@@ -13,9 +7,22 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   console.log(alarm.name);
-  url_Scraper();
-  getAge();
+  userFlag=localStorage.getItem('isLoggedIn');
+  login_Checker();
+  logout_Checker();
 });
+//*****/Login Checker/*****//
+login_Checker=()=>{
+  console.log("Flag",userFlag);
+  if(userFlag == "true"){
+    url_Scraper();//scraping th url//
+    getAge();//Fetch the age//
+  }
+  else{
+        console.log("please login");
+      }
+}
+
 //*****/scrapes the URl of active tab of user/*****//
 function url_Scraper() {
   chrome.tabs.query({"active":true,"lastFocusedWindow":true},function(tabs){
@@ -50,6 +57,8 @@ function time_Cal() {
         }
   console.log("Hours:",hours);
   console.log("Minutes:",minutes);
+  localStorage.setItem("minutes",minutes);
+  localStorage.setItem("hours",hours);
 }
 
 //*****/Statring time Fuction/*****//
@@ -62,19 +71,54 @@ function start_Timmer(){
  }
 
  const getAge=()=>{
-  console.log(localStorage.getItem('userName'))
+  console.log("UserName",localStorage.getItem('userName'))
   if(localStorage.getItem('userName')!=null)
   fetch(`http://localhost:4000/api/users/age/${localStorage.getItem('userName')}`).then(res=>res.json()).then(data=>ageTimer(data.Age));
 }
 
 const ageTimer=(age)=>{
-  if(age >=25 || age <=36){
+  localStorage.setItem("AGE",age);
+  if(age >=11 && age <=16){
     console.log("I am Between 11-16");
     Timer();
     if(hours>=2){
       stop_timmer()
-
     }
+}
+else if(age >=17 && age <=24){
+  console.log("I am between 17-24");
+  Timer();
+  if(hours >=6){
+    stop_timmer();
+  }
+}
+else if(age>=25 && age <= 40){
+  console.log("I am between 24-40 ");
+  Timer();
+  if(hours>=12){
+    stop_timmer();
+  }
+}
+else if(age >=41 && age <=60){
+  console.log("I am between 40-60");
+  Timer();
+  if(hours>=9){
+    stop_timmer();
+  }
+}
+else if(age>=61){
+  console.log("I am 60 or above");
+  Timer();
+   if(hours>=5){
+     stop_timmer();
+   }
+}
+}
 
+logout_Checker=()=>{
+  if(userFlag == "false"){
+    console.log("logout signal");
+  }else{
+    console.log("user is still login "); 
   }
 }
