@@ -50,4 +50,17 @@ require("./config/passport")(passport);
 //*****/Routes/*****//
 app.use("/api/users",users);
 
+//*****/Get Data from Mongoose/***//
+app.get('/getusers', function(req, res) {
+  User.find({}, function(err, foundData) { //empty query for all data
+      if(err) {
+          console.log(err);
+          return res.status(500).send();
+      } else {
+          return res.status(200).send(foundData);
+      }
+  });
+});
+
+
 
