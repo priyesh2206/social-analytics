@@ -18,7 +18,7 @@ return(
     <Nav className="mr-auto">
       <Link to ="/submit">SUBMIT</Link>
       <Link to ="/myProfile">MyProfile</Link>
-      <Link to ="/scoreBoard">SCOREBOARD</Link>
+      <Link to ="/scoreBoard">RankBoard</Link>
       <Link to ="/graph">GRAPH</Link>
       <Link to ="/monthlyData">MonthlyData</Link>
       <Link to ="/profile">PROFILE</Link>
