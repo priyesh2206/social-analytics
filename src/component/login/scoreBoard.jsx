@@ -45,6 +45,7 @@ export class ScoreBoard extends React.Component {
               </div>
           </div>
               <table id="students">
+                <tbody>
                 <tr>
                   <th>UserId</th>
                   <th>UserName</th>
@@ -52,7 +53,8 @@ export class ScoreBoard extends React.Component {
                   <th>Age</th>
                   <th>timestamp</th>
                 </tr>  
-                {TableToPrint} 
+                {TableToPrint}
+                </tbody> 
               </table>
           </div>
       :null
