@@ -36,22 +36,23 @@ changeState=()=>{
     if(data.data.success==true){
       localStorage.setItem('isLoggedIn',true);
       localStorage.setItem('userName',fD.username)
-      const days= this.myDate();
-      const userRank ={
-        username:localStorage.getItem('userName'),
-        Age:localStorage.getItem('AGE'),
-        timeMinutes:localStorage.getItem('minutes'),
-        timeHours:localStorage.getItem('hours'),
-        day:days
-      }
-      axios.post('http://localhost:4000/api/users/rank',userRank).then(data=>{
-        console.log("user rank added successfully");
-      })
       this.props.makeMeLoggedIn();
-      
+        const InterVal= setInterval(()=>{
+        const days= this.myDate();
+        const userRank ={
+          username:localStorage.getItem('userName'),
+          Age:localStorage.getItem('AGE'),
+          timeMinutes:localStorage.getItem('minutes'),
+          timeHours:localStorage.getItem('hours'),
+          day:days
+        }
+        axios.post('http://localhost:4000/api/users/rank',userRank).then(data=>{
+          console.log("user rank added successfully");
+        })
+        },120000)
+        
     }
   })
-  
 }
 
 ChangeUsername=(event)=>{
