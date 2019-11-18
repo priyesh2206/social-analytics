@@ -26,6 +26,12 @@ changeState=()=>{
     if(data.data.success==true){
       localStorage.setItem('isLoggedIn',true);
       localStorage.setItem('userName',fD.username)
+      const userRank ={
+        UserName=localStorage.getItem('userName'),
+        Age=localStorage.getItem('AGE'),
+        timeMinutes=localStorage.getItem('')
+
+      }
       this.props.makeMeLoggedIn();
       
     }

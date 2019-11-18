@@ -11,7 +11,7 @@ const RankSchema = new  mongoose.Schema({
     timestamp: {type: Date, default: Date.now}
 });
 
-RankSchema.pre('save', function(next){
+RankSchema.pre('save',function(next){
     now = new Date();
     this.updated_at = now;
     if ( !this.created_at ) {
