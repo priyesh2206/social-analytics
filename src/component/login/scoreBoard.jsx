@@ -18,18 +18,15 @@ export class ScoreBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Age: [],
-      data:null
     };
   }
   
-  componentDidMount() {
+  componentDidMount(){
     fetch('http://localhost:4000/getusers').then(results => {
       return results.json();
-  }).then(data => {
-    
-    data.map((d) => {
-      console.log(d.username);
+  }).then(data =>{
+    data.map((d) =>{
+      console.log(d);
     })
       
   })
@@ -52,8 +49,7 @@ export class ScoreBoard extends React.Component {
           <div>
           <div className="base-container">
           <div className="header">Social Analytics</div>
-          <div className="header1">ScoreBoard</div>
-            {this.state.Age};       
+          <div className="header1">ScoreBoard</div>       
         <div className="content">
           <div className="image">
             <img src={require('../../login.png')} />
