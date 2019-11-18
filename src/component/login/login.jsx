@@ -13,9 +13,19 @@ export class Login extends React.Component {
     super(props);   
     this.state=initialState;
 }
-
-  
-
+myDate=()=>{
+  const a = new Date();
+  const days = new Array(7);
+  days[0] = "Sunday";
+  days[1] = "Monday";
+  days[2] = "Tuesday";
+  days[3] = "Wednesday";
+  days[4] = "Thursday";
+  days[5] = "Friday";
+  days[6] = "Saturday";
+  const day = days[a.getDay()];
+  return day;
+}
 changeState=()=>{
   const fD={
     username:this.state.userName,
@@ -26,12 +36,17 @@ changeState=()=>{
     if(data.data.success==true){
       localStorage.setItem('isLoggedIn',true);
       localStorage.setItem('userName',fD.username)
+      const days= this.myDate();
       const userRank ={
-        UserName=localStorage.getItem('userName'),
-        Age=localStorage.getItem('AGE'),
-        timeMinutes=localStorage.getItem('')
-
+        username:localStorage.getItem('userName'),
+        Age:localStorage.getItem('AGE'),
+        timeMinutes:localStorage.getItem('minutes'),
+        timeHours:localStorage.getItem('hours'),
+        day:days
       }
+      axios.post('http://localhost:4000/api/users/rank',userRank).then(data=>{
+        console.log("user rank added successfully");
+      })
       this.props.makeMeLoggedIn();
       
     }

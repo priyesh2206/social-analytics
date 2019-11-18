@@ -103,7 +103,6 @@ router.get('/age/:username', function(req, res){
 });
 
 router.post('/rank',(req,res)=>{
-    //const username=localStorage.getItem('userName');
   Rank.findOne({username:req.body.username}).then(user=>{
       if(user){
         return res.status(400).json({username:"username already exist"})
