@@ -8,6 +8,9 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.alarms.onAlarm.addListener((alarm) => {
   console.log(alarm.name);
   userFlag=localStorage.getItem('isLoggedIn');
+  localStorage.setItem("minutes",minutes);
+  localStorage.setItem("hours",hours);
+
   login_Checker();
   logout_Checker();
 });
@@ -57,8 +60,8 @@ function time_Cal() {
         }
   console.log("Hours:",hours);
   console.log("Minutes:",minutes);
-  localStorage.setItem("minutes",minutes);
-  localStorage.setItem("hours",hours);
+  // localStorage.setItem("minutes",minutes);
+  // localStorage.setItem("hours",hours);
 }
 
 //*****/Statring time Fuction/*****//

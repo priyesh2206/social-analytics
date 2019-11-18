@@ -13,6 +13,7 @@ const ValidateLoginInput = require("../../validators/login");
 //*****/Load User Model/*****//
 
 const User = require("../../model/user");
+const Rank = require("../../model/rank");
 
 router.post("/register",(req,res) =>{
     console.log(req.body)
@@ -101,6 +102,26 @@ router.get('/age/:username', function(req, res){
 	});
 });
 
-
+router.post('/rank',(req,res)=>{
+    //const username=localStorage.getItem('userName');
+  Rank.findOne({username:req.body.username}).then(user=>{
+      if(user){
+        return res.status(400).json({username:"username already exist"})
+      }else{
+        const UserRank = new Rank({
+            username:req.body.username,
+            Age:req.body.Age,
+            timeMinutes:req.body.timeMinutes,
+            timeHours:req.body.timeHours,
+            created_at:req.body.created_at,
+            updated_at:req.body.updated_at,
+            day:req.body.day,
+            timestamp:req.body.timestamp
+    });
+    UserRank.save().then((user=>{
+        res.status(200).json({message:"user rank created!!"})
+    }))
+         }
+})
+})
 module.exports = router;
-
