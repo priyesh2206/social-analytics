@@ -105,8 +105,8 @@ router.get('/age/:username', function(req, res){
 router.post('/rank',(req,res)=>{
   Rank.findOne({username:req.body.username}).then(user=>{
       if(user){
-        Rank.findOneAndUpdate({"username":username},{$set:{"username":username},$set:{"Age":Age},$set:{"timeMinutes":timeMinutes},$set:{"timeHours":timeHours},$set:{"day":day}})
-        .exec(function(err,book){
+        Rank.findOneAndUpdate({username:username},{$set:{"username":username},$set:{"Age":Age},$set:{"timeMinutes":timeMinutes},$set:{"timeHours":timeHours},$set:{"day":day}})
+        .exec(function(err,data){
             if(err){
             console.log(err);
             res.status(500).send(err);

@@ -2,7 +2,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log('onInstalled extension ...');
   //*****/create alarm after extension is installed / upgrade/*****//
-  chrome.alarms.create('refreshing',{periodInMinutes: 1});
+  chrome.alarms.create('refreshing',{periodInMinutes: 2});
 });
 
 chrome.alarms.onAlarm.addListener((alarm) => {
