@@ -105,16 +105,16 @@ router.get('/age/:username', function(req, res){
 router.post('/rank',(req,res)=>{
   Rank.findOne({username:req.body.username}).then(user=>{
       if(user){
-        Rank.findOneAndUpdate({username:username},{$set:{"username":username},$set:{"Age":Age},$set:{"timeMinutes":timeMinutes},$set:{"timeHours":timeHours},$set:{"day":day}})
-        .exec(function(err,data){
-            if(err){
-            console.log(err);
-            res.status(500).send(err);
+        Rank.findOneAndUpdate(
+            {username:user.username}, // find a document with that filter
+            req.body, // document to insert 
+            {upsert: true, new: true, runValidators: true}, // options
+            function (err, updatedrank) { // callback
+                if (err) console.log('ERROR '+ err);
+                else res.json(updatedrank)
+
             }
-            else{
-                res.status(200).send(data);
-            }
-            })
+        );
       }else{
         const UserRank = new Rank({
             username:req.body.username,

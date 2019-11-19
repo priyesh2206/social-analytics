@@ -51,6 +51,7 @@ require("./config/passport")(passport);
 app.use("/api/users",users);
 
 //*****/Get Data from Mongoose/***//
+
 app.get('/getusers', function(req, res) {
   User.find({}, function(err, foundData) { //empty query for all data
       if(err) {
@@ -60,7 +61,7 @@ app.get('/getusers', function(req, res) {
           return res.status(200).send(foundData);
       }
   });
-});
+})
 
 
 

@@ -2,7 +2,6 @@ import React from 'react';
 
 
 
-
 export class ScoreBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -12,12 +11,17 @@ export class ScoreBoard extends React.Component {
   }
   
   componentDidMount(){
-    fetch('http://localhost:4000/getusers').then(results => {
-      return results.json();
-        }).then(data =>{
-             this.setState({data:data})
-        })
-      }
+ fetch('http://localhost:4000/getusers').then(results => {
+            return results.json();
+          }).then(data => {
+            data.sort((a, b) => a.Age - b.Age);
+            
+              this.setState({
+                data: data
+              });
+          })
+    }
+ 
     render(){
       const TableToPrint = this.state.data.map((d)=>{
           return <tr key={d._id}>
@@ -34,12 +38,12 @@ export class ScoreBoard extends React.Component {
           <div>
           <div className="base-container">
           <div className="header">Social Analytics</div>
-          <div className="header1">ScoreBoard</div>       
-          <div className="content">
-            <div className="image">
-                <img src={require('../../login.png')} />
-            </div> 
-          </div>
+          <div className="header1">ScoreBoard</div>
+        <div className="content">
+          <div className="image">
+            <img src={require('../../login.png')} />
+           </div>
+    </div>
           <div className="header">Rank Board</div>   
           </div>
               <table id="students">
@@ -57,10 +61,9 @@ export class ScoreBoard extends React.Component {
           </div>
       :null
       }
-
       </div>
        );
-      }
+    }
     } 
      
 export default ScoreBoard;
