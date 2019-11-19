@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { MDBDataTable } from 'mdbreact';
 
 
 
@@ -12,24 +12,17 @@ export class ScoreBoard extends React.Component {
   }
   
   componentDidMount(){
-    fetch('http://localhost:4000/getusers').then(results => {
-      return results.json();
-  }).then(data =>{
-    data.map((d) =>{
-      console.log(d);
-    })
-      
-  })
-
-          fetch('http://localhost:4000/getusers').then(results => {
+ fetch('http://localhost:4000/getusers').then(results => {
             return results.json();
           }).then(data => {
+            data.sort((a, b) => a.Age - b.Age);
+            
               this.setState({
                 data: data
               });
           })
     }
-    
+ 
     render(){
       const TableToPrint = this.state.data.map((d)=>{
           return <tr key={d._id}>
@@ -46,23 +39,13 @@ export class ScoreBoard extends React.Component {
           <div>
           <div className="base-container">
           <div className="header">Social Analytics</div>
-          <div className="header1">ScoreBoard</div>       
+          <div className="header1">ScoreBoard</div>
         <div className="content">
           <div className="image">
             <img src={require('../../login.png')} />
            </div>
-           
-          
     </div>
-          <div className="image">
-        <img src="" alt="User Image" />
-        </div>
           <div className="header">Rank Board</div>   
-              <div className="content">
-                  <div className="image">
-                    <img src={require('../../login.png')} />
-                  </div>
-              </div>
           </div>
               <table id="students">
                 <tbody>
@@ -81,7 +64,7 @@ export class ScoreBoard extends React.Component {
       }
       </div>
        );
-      }
+    }
     } 
      
 export default ScoreBoard;

@@ -103,10 +103,18 @@ router.get('/age/:username', function(req, res){
 });
 
 router.post('/rank',(req,res)=>{
-    //const username=localStorage.getItem('userName');
   Rank.findOne({username:req.body.username}).then(user=>{
       if(user){
-        return res.status(400).json({username:"username already exist"})
+        Rank.findOneAndUpdate({"username":username},{$set:{"username":username},$set:{"Age":Age},$set:{"timeMinutes":timeMinutes},$set:{"timeHours":timeHours},$set:{"day":day}})
+        .exec(function(err,book){
+            if(err){
+            console.log(err);
+            res.status(500).send(err);
+            }
+            else{
+                res.status(200).send(data);
+            };
+            })
       }else{
         const UserRank = new Rank({
             username:req.body.username,

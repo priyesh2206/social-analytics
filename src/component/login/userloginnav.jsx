@@ -9,6 +9,11 @@ export class  UserNav extends React.Component {
     localStorage.setItem('isLoggedIn',false);
     localStorage.setItem('userName',null);
     this.props.makeMeLoggedIn();
+    let higestInterval = setInterval(function(){
+    },0);
+    for(let i=higestInterval;i>0;i--){
+      clearInterval(i);
+    }
   }
     render() {
 return(
