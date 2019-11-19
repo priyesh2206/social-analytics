@@ -7,15 +7,11 @@ export class ScoreBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-=======
       data:[]
->>>>>>> dd63efab0ec7104533728ce9dfaaf31b5ae3fa92
     };
   }
   
   componentDidMount(){
-<<<<<<< HEAD
     fetch('http://localhost:4000/getusers').then(results => {
       return results.json();
   }).then(data =>{
@@ -24,7 +20,7 @@ export class ScoreBoard extends React.Component {
     })
       
   })
-=======
+
           fetch('http://localhost:4000/getusers').then(results => {
             return results.json();
           }).then(data => {
@@ -32,7 +28,6 @@ export class ScoreBoard extends React.Component {
                 data: data
               });
           })
->>>>>>> dd63efab0ec7104533728ce9dfaaf31b5ae3fa92
     }
     
     render(){
@@ -51,7 +46,6 @@ export class ScoreBoard extends React.Component {
           <div>
           <div className="base-container">
           <div className="header">Social Analytics</div>
-<<<<<<< HEAD
           <div className="header1">ScoreBoard</div>       
         <div className="content">
           <div className="image">
@@ -63,7 +57,6 @@ export class ScoreBoard extends React.Component {
           <div className="image">
         <img src="" alt="User Image" />
         </div>
-=======
           <div className="header">Rank Board</div>   
               <div className="content">
                   <div className="image">
@@ -86,7 +79,6 @@ export class ScoreBoard extends React.Component {
           </div>
       :null
       }
->>>>>>> dd63efab0ec7104533728ce9dfaaf31b5ae3fa92
       </div>
        );
       }
