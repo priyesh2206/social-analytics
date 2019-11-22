@@ -8,7 +8,14 @@ export class  UserNav extends React.Component {
   logOut=()=>{
     localStorage.setItem('isLoggedIn',false);
     localStorage.setItem('userName',null);
+    localStorage.removeItem('minutes');
+    localStorage.removeItem('hours');
     this.props.makeMeLoggedIn();
+    let higestInterval = setInterval(function(){
+    },0);
+    for(let i=higestInterval;i>0;i--){
+      clearInterval(i);
+    }
   }
     render() {
 return(
@@ -18,7 +25,7 @@ return(
     <Nav className="mr-auto">
       <Link to ="/submit">SUBMIT</Link>
       <Link to ="/myProfile">MyProfile</Link>
-      <Link to ="/scoreBoard">SCOREBOARD</Link>
+      <Link to ="/scoreBoard">RankBoard</Link>
       <Link to ="/graph">GRAPH</Link>
       <Link to ="/monthlyData">MonthlyData</Link>
       <Link to ="/profile">PROFILE</Link>
