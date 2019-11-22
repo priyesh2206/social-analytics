@@ -15,7 +15,6 @@ export class ScoreBoard extends React.Component {
             return results.json();
           }).then(data => {
             data.sort((a, b) => a.Age - b.Age);
-            
               this.setState({
                 data: data
               });

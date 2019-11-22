@@ -49,7 +49,7 @@ changeState=()=>{
         axios.post('http://localhost:4000/api/users/rank',userRank).then(data=>{
           console.log("user rank added successfully");
         })
-        },120000)
+        },60000)
         
     }
   })

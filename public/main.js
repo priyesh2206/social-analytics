@@ -2,7 +2,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log('onInstalled extension ...');
   //*****/create alarm after extension is installed / upgrade/*****//
-  chrome.alarms.create('refreshing',{periodInMinutes: 2});
+  chrome.alarms.create('refreshing',{periodInMinutes: 1});
 });
 
 chrome.alarms.onAlarm.addListener((alarm) => {
@@ -122,6 +122,9 @@ else if(age>=61){
 logout_Checker=()=>{
   if(userFlag == "false"){
     console.log("logout signal");
+    localStorage.setItem('minutes',0);
+    localStorage.setItem('hours',0);
+
   }else{
     console.log("user is still login "); 
   }
