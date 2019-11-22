@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const passport = require("passport");
 const users = require("./routes/api/user");
 const User = require('./model/user');
+const Rank = require('./model/rank');
 
 require('dotenv').config();
 
@@ -54,6 +55,19 @@ app.use("/api/users",users);
 
 app.get('/getusers', function(req, res) {
   User.find({}, function(err, foundData) { //empty query for all data
+      if(err) {
+          console.log(err);
+          return res.status(500).send();
+      } else {
+          return res.status(200).send(foundData);
+      }
+  });
+})
+
+//****Get Data of Timer from Mongoose***** */
+
+app.get('/getranks', function(req, res) {
+  Rank.find({}, function(err, foundData) { //empty query for all data
       if(err) {
           console.log(err);
           return res.status(500).send();
