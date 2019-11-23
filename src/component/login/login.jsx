@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
 import axios from "axios";
+import "./login.css";
 
 const initialState={
   loginOpen:true,
@@ -13,6 +14,8 @@ export class Login extends React.Component {
     super(props);   
     this.state=initialState;
 }
+
+
 myDate=()=>{
   const a = new Date();
   const days = new Array(7);
@@ -49,7 +52,7 @@ changeState=()=>{
         axios.post('http://localhost:4000/api/users/rank',userRank).then(data=>{
           console.log("user rank added successfully");
         })
-        },120000)
+        },60000)
         
     }
   })
@@ -65,28 +68,21 @@ changePassword=(event)=>{
 
   render() {
     return (
-    
-  
-   <div>
+      <div>
         {this.state.loginOpen?(
-        <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Login</div>
-        <div className="content">
-          <div className="image">
-            <img src={require('../../login.png')} />
-          </div>
-          <div className="form">
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
+        <div className="base-container1" ref={this.props.containerRef}>
+        
+        <div className="header1"><h1>Login</h1>
+          <div className="form1">
+            <div className="form-group1">
               <input
-                 type="text"  
+                 type="text"
                  name="username" 
                  placeholder="username" 
                  onChange={this.ChangeUsername}
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
+            <div className="form-group1">
               <input 
                  type="password" 
                  name="password" 
@@ -95,7 +91,6 @@ changePassword=(event)=>{
               />
             </div>
           </div>
-        </div>
           <div>
         <div className="footer">
             <Link to='/submit'> 
@@ -103,8 +98,8 @@ changePassword=(event)=>{
                      Login
                   </button>
             </Link>
-          </div>
-          <div>
+            </div>
+            <div className="abc">
               <Link to='/register'>
                  <button type="button" className="btn" onClick={this.changeState}>
                     SignUp
@@ -112,10 +107,13 @@ changePassword=(event)=>{
               </Link>
           </div>
         </div>
+        </div>
         </div>):(
           null
         )
         }
+        {/* <section style={ sectionStyle }>
+      </section> */}
       </div> 
      
     );

@@ -1,0 +1,48 @@
+@media (max-width:1500px) and (min-width:1000px)
+ {
+.body1{
+    background: url("../../assets/img3.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+    overflow: hidden;
+}
+ }
+
+
+ @media (max-width:1000px) and (min-width:700px) 
+ {
+    .body1{
+        background: url("../../assets/img3.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 1000px;
+        overflow: hidden;
+    }
+ }
+
+ @media (max-width:700px) and (min-width:500px)
+  {
+    .body1{
+        background: url("../../assets/img3.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 1000px;
+        overflow: hidden;
+    }
+  }
+
+  @media (max-width:500px) and (min-width:50px)
+  {
+    .body1{
+        background: url("../../assets/img3.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 1500px;
+        overflow: hidden;
+    }
+  }

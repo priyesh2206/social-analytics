@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "canvasjs": "^1.8.1",
     "classnames": "^2.2.6",
     "fusioncharts": "^3.14.1",
     "jquery": "^3.4.1",

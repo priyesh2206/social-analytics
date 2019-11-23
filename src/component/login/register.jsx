@@ -1,6 +1,7 @@
 import React  from 'react';
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
 import axios from 'axios';
+import "./register.css";
 
  
 
@@ -59,23 +60,15 @@ export class Register extends React.Component {
        
 return (
      <div>
-          <div className="base-container" ref={this.props.containerRef}>
-             <div className="header">Register</div>
-                  <div className="content">
-                   <div className="image">
-                       <img src={require('../../register.png')} />
-                   </div>
-                   <div >
-                      <p>
-                        Already Have Account? <Link to ='/login'>LogIn</Link>
-                      </p>
-                   </div>
-                    <div className="form">
+          <div className="base-container2" ref={this.props.containerRef}>
+             <div className="header2"><h1>Register</h1>
+
+                  
+                    <div className="form2">
          {/* register input Fileds */}
        <form onValidate onSubmit={this.onSubmit}>
-       <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input 
+       <div className="form-group2">
+          <input 
                   onChange={this.changeusername}
                   error= {Errors.username}
                   type="text" 
@@ -83,9 +76,8 @@ return (
                   placeholder="username" 
               />
        </div>
-        <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input 
+        <div className="form-group2">
+            <input 
                   onChange={this.changeemail}
                   error={Errors.email}
                   type="text" 
@@ -93,9 +85,8 @@ return (
                   placeholder="email" 
               />
         </div>
-        <div className="form-group">
-              <label htmlFor="Age">Age</label>
-              <input 
+        <div className="form-group2">
+            <input 
                   onChange={this.changeAge}
                   type="text" 
                   name="age" 
@@ -103,9 +94,8 @@ return (
               />
         </div>
         
-        <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input 
+        <div className="form-group2">
+            <input 
                   onChange = {this.changepassword}
                   error = {Errors.password}
                   type="text" 
@@ -113,9 +103,8 @@ return (
                   placeholder="password" 
               />
         </div>
-        <div className="form-group">
-              <label htmlFor="password2">Confirm-Password</label>
-              <input
+        <div className="form-group2">
+           <input
                   onChange = {this.changepassword2}
                   error = {Errors.password2}
                   type="text" 
@@ -125,7 +114,7 @@ return (
         </div>
         </form>
       </div>
-    </div>    
+      
     <script src="./component/login/main"></script>
     <div className="footer">
          <Link to='/login'> 
@@ -134,7 +123,16 @@ return (
                </button>
          </Link>
     </div>
-  </div>
+  
+  
+  <div className="Pre">
+                      <p>
+                        Already Have Account? <Link to ='/login'>LogIn</Link>
+                      </p>
+                   </div>
+                   </div>
+  
+</div>
 </div>
     );    
   }

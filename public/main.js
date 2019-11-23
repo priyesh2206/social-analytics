@@ -122,6 +122,9 @@ else if(age>=61){
 logout_Checker=()=>{
   if(userFlag == "false"){
     console.log("logout signal");
+    localStorage.setItem('minutes',0);
+    localStorage.setItem('hours',0);
+
   }else{
     console.log("user is still login "); 
   }

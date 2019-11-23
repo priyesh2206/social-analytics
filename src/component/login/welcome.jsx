@@ -2,6 +2,7 @@ import React from 'react';
 import Nav2 from './navbar';
 import Submit from './submit'
 import UserNav from './userloginnav'
+import "./welcome.css";
 
 export class  Welcome extends React.Component {
 
@@ -15,11 +16,12 @@ export class  Welcome extends React.Component {
             return <UserNav makeMeLoggedIn={this.props.makeMeLoggedIn}/> 
         }
         else{
-            return( 
-                        <div>
+            return(     
+                        <div className="body1">
                         <Nav2/>
-                        <h1> WElcome to our extension</h1>
+                        <h1 style={{marginTop:"50px"}}>Hey Folks! &#129312;<br></br>Focus on how to be social, not how to do social.!!&#128512;</h1>
                         </div>
+                        
             )
         }
     }

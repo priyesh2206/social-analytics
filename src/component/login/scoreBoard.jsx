@@ -1,5 +1,4 @@
 import React from 'react';
-import { MDBDataTable } from 'mdbreact';
 
 
 
@@ -12,11 +11,10 @@ export class ScoreBoard extends React.Component {
   }
   
   componentDidMount(){
- fetch('http://localhost:4000/getusers').then(results => {
+ fetch('http://localhost:4000/getranks').then(results => {
             return results.json();
           }).then(data => {
-            data.sort((a, b) => a.Age - b.Age);
-            
+            data.sort((a, b) => a.timeMinutes - b.timeMinutes);
               this.setState({
                 data: data
               });
@@ -28,8 +26,9 @@ export class ScoreBoard extends React.Component {
           return <tr key={d._id}>
             <td>{d._id}</td>
             <td>{d.username}</td>
-            <td>{d.email}</td>
             <td>{d.Age}</td>
+            <td>{d.timeMinutes}</td>
+            <td>{d.timeHours}</td>
             <td>{d.timestamp}</td>
           </tr>
       })
@@ -52,9 +51,10 @@ export class ScoreBoard extends React.Component {
                 <tr>
                   <th>UserId</th>
                   <th>UserName</th>
-                  <th>Email</th>
                   <th>Age</th>
-                  <th>timestamp</th>
+                  <th>TimeMinutes</th>
+                  <th>TimeHours</th>
+                  <th>Timestamp</th>
                 </tr>  
                 {TableToPrint}
                 </tbody> 

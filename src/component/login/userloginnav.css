@@ -1,0 +1,17 @@
+.mr-auto {
+    background-color:blue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.mr-auto h6 {
+    color:rgb(70, 32, 70);
+}
+
+
+
