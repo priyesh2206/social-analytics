@@ -26,8 +26,14 @@ myDate=()=>{
   const day = days[a.getDay()];
   return day;
 }
+
+getDate=()=>{
+  const d1 = new Date();
+  const d2= d1.getFullYear()+'-'+(d1.getMonth()+1)+'-'+(d1.getDate());
+  return d2;
+}
 changeState=()=>{
-  const fD={
+    const fD={
     username:this.state.userName,
     password:this.state.password
   }
@@ -38,18 +44,18 @@ changeState=()=>{
       localStorage.setItem('userName',fD.username)
       this.props.makeMeLoggedIn();
         const InterVal= setInterval(()=>{
-        const days= this.myDate();
+        const dated= this.getDate();
         const userRank ={
           username:localStorage.getItem('userName'),
           Age:localStorage.getItem('AGE'),
           timeMinutes:localStorage.getItem('minutes'),
           timeHours:localStorage.getItem('hours'),
-          day:days
+          date:dated
         }
         axios.post('http://localhost:4000/api/users/rank',userRank).then(data=>{
           console.log("user rank added successfully");
         })
-        },60000)
+        },120000)
         
     }
   })

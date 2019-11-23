@@ -10,6 +10,7 @@ export class Graph extends React.Component {
       super(props);
      }
      componentDidMount(){ 
+      var chart = this.chart;
     const data=[
       {
         "x": 1483228800000,
@@ -66,7 +67,7 @@ export class Graph extends React.Component {
             y: data[i].y
           });
         }
-        this.chart.render();
+        chart.render();
       }
      
      
@@ -110,7 +111,7 @@ export class Graph extends React.Component {
       </div>
       <div>
         <CanvasJSChart options = {options} 
-				 onRef={ref => this.chart = ref}
+				onRef={ref => this.chart = ref}
 			/>
 		</div>  
     </div>
