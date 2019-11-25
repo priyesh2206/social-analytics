@@ -103,33 +103,67 @@ router.get('/age/:username', function(req, res){
 });
 
 router.post('/rank',(req,res)=>{
-  Rank.findOne({username:req.body.username}).then(user=>{
-      if(user){
-        Rank.findOneAndUpdate(
-            {username:user.username}, // find a document with that filter
-            req.body, // document to insert 
-            {upsert: true, new: true, runValidators: true}, // options
-            function (err, updatedrank) { // callback
-                if (err) console.log('ERROR '+ err);
-                else res.json(updatedrank)
-
-            }
-        );
-      }else{
-        const UserRank = new Rank({
-            username:req.body.username,
-            Age:req.body.Age,
-            timeMinutes:req.body.timeMinutes,
-            timeHours:req.body.timeHours,
-            created_at:req.body.created_at,
-            updated_at:req.body.updated_at,
-            day:req.body.day,
-            timestamp:req.body.timestamp
-    });
-    UserRank.save().then((user=>{
-        res.status(200).json({message:"user rank created!!"})
-    }))
-         }
-})
-})
-module.exports = router;
+    Rank.findOne({username:req.body.username}).then(user=>{
+        if(user){
+          let nowDate = new Date(req.body.date)
+          let userDate = new Date(user.date)
+          if(userDate < nowDate){
+              Rank.update(
+                  {username:user.username},
+                  {$push:{userData:user}},
+                  function(err,send){
+                      if (err) console.log('ERROR '+ err);
+                      else{
+                          Rank.findOneAndUpdate(
+                              {username:user.username}, // find a document with that filter
+                              req.body, // document to insert 
+                              {upsert: true, new: true, runValidators: true}, // options
+                              function (err, updatedrank) { // callback
+                                  if (err) console.log('ERROR '+ err);
+                                  else res.json(updatedrank)
+                 
+                              })
+                      }
+                  }
+              )
+              
+          }
+          else{
+              Rank.findOneAndUpdate(
+                       {username:user.username}, // find a document with that filter
+                       req.body, // document to insert 
+                       {upsert: true, new: true, runValidators: true}, // options
+                       function (err, updatedrank) { // callback
+                           if (err) console.log('ERROR '+ err);
+                           else res.json(updatedrank)
+          
+                       })
+          }
+          // Rank.findOneAndUpdate(
+          //     {username:user.username}, // find a document with that filter
+          //     req.body, // document to insert 
+          //     {upsert: true, new: true, runValidators: true}, // options
+          //     function (err, updatedrank) { // callback
+          //         if (err) console.log('ERROR '+ err);
+          //         else res.json(updatedrank)
+  
+          //     }
+          //);
+        }else{
+          const UserRank = new Rank({
+              username:req.body.username,
+              Age:req.body.Age,
+              timeMinutes:req.body.timeMinutes,
+              timeHours:req.body.timeHours,
+              created_at:req.body.created_at,
+              updated_at:req.body.updated_at,
+              date:req.body.date,
+              timestamp:req.body.timestamp
+      });
+      UserRank.save().then((user=>{
+          res.status(200).json({message:"user rank created!!"})
+      }))
+           }
+  })
+  })
+  module.exports = router;

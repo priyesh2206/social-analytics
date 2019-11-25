@@ -1,120 +1,116 @@
 import React from 'react';
+import "./graph.css";
 var CanvasJSReact = require('../../assets/canvasjs.react');
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
-var dataPoints =[];
 export class Graph extends React.Component {
     constructor(props) {
       super(props);
+      this.state = {
+        Age:[]
+      };
      }
-     componentDidMount(){ 
-       var chart = this.chart;
-    const data=[
-      {
-        "x": 1483228800000,
-        "y": 8561.3
-      },
-      {
-        "x": 1485907200000,
-        "y": 8879.6
-      },
-      {
-        "x": 1488326400000,
-        "y": 9173.75
-      },
-      {
-        "x": 1491004800000,
-        "y": 9304.05
-      },
-      {
-        "x": 1493596800000,
-        "y": 9621.25
-      },
-      {
-        "x": 1496275200000,
-        "y": 9520.9
-      },
-      {
-        "x": 1498867200000,
-        "y": 10077.1
-      },
-      {
-        "x": 1501545600000,
-        "y": 9917.9
-      },
-      {
-        "x": 1504224000000,
-        "y": 9788.6
-      },
-      {
-        "x": 1506816000000,
-        "y": 10335.3
-      },
-      {
-        "x": 1509494400000,
-        "y": 10226.55
-      },
-      {
-        "x": 1512086400000,
-        "y": 10530.7
-      }
-    ]
-        for (var i = 0; i < data.length; i++) {
-          dataPoints.push({
-            x: new Date(data[i].x),
-            y: data[i].y
-          });
-        }
-        chart.render();
-      }
+
+     myDate=()=>{
+      const a = new Date();
+      const days = new Array(7);
+      days[0] = "Sunday";
+      days[1] = "Monday";
+      days[2] = "Tuesday";
+      days[3] = "Wednesday";
+      days[4] = "Thursday";
+      days[5] = "Friday";
+      days[6] = "Saturday";
+      const day = days[a.getDay()];
+      return day;
+    }
      
-     
+  limit=()=>{
+      const userAge=this.state.Age
+      if(userAge>=11 && userAge <=16){
+        const limit = "2 hours {as per the Age Concern}"
+        return limit 
+   }
+   else if(userAge >=17 && userAge <=24){
+     const limit = "6 hours {as per the Age Concern}"
+        return limit 
+   }
+   else if(userAge >=25 && userAge <= 40){
+     const limit = "12 hours {as per the Age Concern}"
+        return limit 
+   }
+   else if(userAge >=41 && userAge <=60){
+     const limit ="9 hours {as per the Age Concern}"
+     return limit 
+   }
+   else if(userAge>=61){
+     const limit = "5 hours {as per the Age Concern}"
+        return limit 
+ }
+}
+  componentDidMount(){ 
+    const user=localStorage.getItem('isLoggedIn')
+    if( user == 'true'){
+      fetch(`http://localhost:4000/api/users/age/${localStorage.getItem('userName')}`).then(res=>{return res.json()}).then(data=>{
+          this.setState({ 
+            Age:data.Age
+          })
+      })
+    }     
+    }
      render() {
+      const name=localStorage.getItem('userName')
+      const Date = this.myDate();
+      const Age= this.state.Age
+      const limit=this.limit()
       const options = {
-        theme: "light2",
-        title: {
-          text: "Stock Price of NIFTY 50"
-        },
-        axisY: {
-          title: "Price in USD",
-          prefix: "$",
-          includeZero: false
+        theme: "light",
+        animationEnabled: true,
+        exportFileName: "Data Analysis of week",
+        exportEnabled: true,
+        title:{
+          text: "Analysis Of One Week(Minutes)"
         },
         data: [{
-          type: "line",
-          xValueFormatString: "MMM YYYY",
-          yValueFormatString: "$#,##0.00",
-          dataPoints: dataPoints
+          type: "pie",
+          showInLegend: true,
+          legendText: "{label}",
+          toolTipContent: "{label}: <strong>{y} Min</strong>",
+          indexLabel: "{y} Min",
+          indexLabelPlacement: "inside",
+          dataPoints: [
+            { y: 32 , label: "Monday" },
+            { y: 48, label: "Tueday" },
+            { y: 55, label: "Wednesday" },
+            { y: 10, label: "Thusday" },
+            { y: 36, label: "Friday" },
+            { y: 40, label: "Saturday" },
+            { y: 60, label: "Sunday" },
+          ]
         }]
       }
+      
         return (
           <div>
              { this.props.isUserLoggedIn ?
           <div>
           <div className="base-container">
-          <div className="header">Social Analytics</div>
-          <div className="header1">Graph</div>
-          <div className="content">
-          <div className="image">
-            <img src={require('../../login.png')} />
-            <ul>
-               <h1>NAME:</h1>
-               <h1>SCORED:</h1>
-               <h1>LIMIT:</h1>
-               <li>Pie Graph</li>
-               <li>Line Graph</li>
-            </ul>
-          </div>
-        </div>
+          <div className="threed"><h2>Graph analysis&nbsp;<i class="fa fa-line-chart"></i></h2></div>
+          <div>
+              <p className="Name">Name : {name}</p>
+              <p className="Name">Age : {Age}&nbsp;Yrs</p> 
+              <p className="Name">Current Day : {Date}</p>
+              <p className="Name">Limit of User : {limit} </p>           
+          </div> 
       </div>
       <div>
         <CanvasJSChart options = {options} 
-				 onRef={ref => this.chart = ref}
+				onRef={ref => this.chart = ref}
 			/>
-		</div>  
-    </div>
+		</div>    
+     </div>
     :null}
     </div>
        );

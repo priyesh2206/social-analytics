@@ -1,4 +1,4 @@
-.mr-auto {
+/* .mr-auto {
     background-color:blue;
     position: fixed;
     top: 0;
@@ -12,6 +12,27 @@
 .mr-auto h6 {
     color:rgb(70, 32, 70);
 }
+ */
+ h6
+ {
+   color:white;
+  font-family: cursive;
+   padding: 10px;
+ }
 
-
-
+ /* button{
+     float:right;
+     border:1px solid black; background-color: red;
+ } */
+ button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }

@@ -1,4 +1,4 @@
-@media (max-width:1500px) and (min-width:1000px)
+/* @media (max-width:1500px) and (min-width:1000px)
  {
 .body1{
     background: url("../../assets/img3.jpeg");
@@ -42,7 +42,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 1500px;
+        height:1000px;
         overflow: hidden;
     }
-  }
+  } */

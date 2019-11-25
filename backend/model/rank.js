@@ -7,8 +7,9 @@ const RankSchema = new  mongoose.Schema({
     timeHours:{type:Number},
     created_at: { type: Date },
     updated_at: { type: Date },
-    day:{type:String},
-    timestamp: {type: Date, default: Date.now}
+    date:{type:Date},
+    timestamp: {type: Date, default: Date.now},
+    userData:[{date:{type : Date},timeMinutes:{type:Number},timeHours:{type:Number},created_at: { type: Date },updated_at: { type: Date },}]
 });
 
 RankSchema.pre('save',function(next){

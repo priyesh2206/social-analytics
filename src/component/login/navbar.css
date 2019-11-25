@@ -1,4 +1,4 @@
-.mr-auto {
+/* .mr-auto {
     background-color:blue;
     position: absolute;;
     top: 0;
@@ -13,5 +13,10 @@
     color:rgb(121, 34, 121);
 }
 
-
-
+ */
+h6
+ {
+   color:white;
+  font-family: cursive;
+   padding: 10px;
+ }

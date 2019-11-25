@@ -62,9 +62,9 @@ return (
      <div>
           <div className="base-container2" ref={this.props.containerRef}>
              <div className="header2"><h1>Register</h1>
-
+            <div className="content1">
                   
-                    <div className="form2">
+            <div className="form2">
          {/* register input Fileds */}
        <form onValidate onSubmit={this.onSubmit}>
        <div className="form-group2">
@@ -113,6 +113,7 @@ return (
               />
         </div>
         </form>
+      </div>
       </div>
       
     <script src="./component/login/main"></script>

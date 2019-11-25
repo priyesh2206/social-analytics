@@ -1,16 +1,17 @@
-.base-container2
-{
-    margin:0;
-    padding: 0;
-    font-family: sans-serif;
-    /* background: url(img/img1.jpeg); */
-    background-size: cover;
-    
+.base-container2{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
+.content2{
+    display: flex;
+    flex-direction: column;
+}
 .header2 {
     position: absolute;
-    top: 80%;
+    top:650px;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 400px;
@@ -47,6 +48,7 @@
 }
 
 .form-group2 label {
+
     position:absolute;
     top:0;
     left: 0;
@@ -66,8 +68,8 @@
     font-size: 12px;
 }
 
-.base-container2 input[type="submit"]
-{
+.base-container input[type="submit"]
+{  
     background:transparent;
     border: none;
     outline: none;
@@ -84,7 +86,8 @@
 }
 
 .Pre {
-    padding-top:1%;
+    margin-top: 5px;
+    padding-top:5%;
     text-align:center;
 }
 .abc {
