@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
 
-    .header1{
+ .header1{
   margin: 1em 0 0.5em 0;
 	color: #0f0e0e;
 	font-weight: normal;
@@ -81,7 +81,7 @@
       margin-top:-160px;
       // //  margin-left:-100px;
       // //  margin-right:100px; 
-       background-color:#03a9f4;
+       //background-color:#03a9f4;
        border-radius: 10px;
        border: none;
        padding: 10px;
@@ -91,4 +91,20 @@
        font-size: 20px;
        cursor: pointer;
     } 
+    .btn1
+          {
+            width: 200px;
+            height: 60px;
+            border: none;
+            border-radius: 7px;
+            background-color: #03a9f4;
+          }  
+    .btn2{
+            border-radius: 5px;
+            height: 40px;
+            border:none;
+            background-color: #03a9f4;
+
+    } 
+
   }

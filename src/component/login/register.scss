@@ -1,0 +1,115 @@
+.base-container2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .header2 {
+    margin: 1em 0 0.5em 0;
+    text-align: center;
+    color: #0f0e0e;
+    font-weight: normal;
+    font-family: "Ultra", sans-serif;
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    text-shadow: 0 2px rgb(243, 239, 239), 0 3px #777;
+  }
+
+  .content1 {
+    display: flex;
+    flex-direction: column;
+    // width: 100%;
+    // height: 100%;
+
+    .form2 {
+      margin-top: 18em;
+      display: flex;
+      flex-direction: column;
+      transform: translate(-50%, -50%);
+      margin-left: 50%;
+      margin-right: 50%;
+      width: 400px;
+      height: 600px;
+      padding: 15px;
+      background: rgba(3, 3, 3, 0.8);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(163, 93, 93, 0.6);
+      border-radius: 10px;
+
+      .form-group2 {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 2%;
+
+        label {
+          font-size: 20px;
+          color: White;
+          font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        }
+        input {
+          width: 100%;
+          padding: 10px 0;
+          font-size: 16px;
+          color: #fff;
+          letter-spacing: 1px;
+          margin-bottom: 30px;
+          border: none;
+          border-bottom: 1px solid #fff;
+          outline: none;
+          background: transparent;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      p {
+        margin-top: 2%;
+        opacity: 0.7;
+      }
+    }
+  }
+  .footer2 {
+    margin-top: -250px;
+    margin-left: 180px;
+    margin-right: 180px;
+    border-radius: 10px;
+    background-color: #03a9f4;;
+    border: none;
+    padding: 10px;
+    color: rgb(26, 22, 22);
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+
+  }
+}
+ .btn {
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 7px;
+  //background-color: #03a9f4;
+
+}
+
+.Pre {
+  margin-top: 5px;
+  padding-top: 5%;
+  text-align: center;
+}
+.abc {
+  text-align: center;
+}
+.Pre1 {
+  margin-top:-35px;
+  font-size: 20px;
+  padding-top: 5%;
+  text-align: center;
+}

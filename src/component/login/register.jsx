@@ -1,7 +1,7 @@
 import React  from 'react';
 import { BrowserRouter as Router, Redirect, Link } from 'react-router-dom'; 
 import axios from 'axios';
-import "./register.css";
+import "./register.scss";
 
  
 
@@ -28,7 +28,6 @@ export class Register extends React.Component {
     this.setState({email:event.target.value});
   }
   changeAge=(event)=>{
-    console.log(event)
     this.setState({Age:event.target.value});
   }
   changepassword=(event)=>{
@@ -61,10 +60,9 @@ export class Register extends React.Component {
 return (
      <div>
           <div className="base-container2" ref={this.props.containerRef}>
-             <div className="header2"><h1>Register</h1>
+             <div className="header2"><h1>Register&nbsp;<i class="fa fa-registered"></i></h1></div>
             <div className="content1">
-                  
-            <div className="form2">
+              <div className="form2">
          {/* register input Fileds */}
        <form onValidate onSubmit={this.onSubmit}>
        <div className="form-group2">
@@ -117,21 +115,19 @@ return (
       </div>
       
     <script src="./component/login/main"></script>
-    <div className="footer">
+    <div className="footer2">
          <Link to='/login'> 
                <button type="button" className="btn" onClick={this.onSubmit}>
                  Register
                </button>
          </Link>
     </div>
-  
-  
-  <div className="Pre">
-                      <p>
-                        Already Have Account? <Link to ='/login'>LogIn</Link>
-                      </p>
-                   </div>
-                   </div>
+    <div className="Pre1">
+          <p>
+             Already Have Account? <Link to='/login'>LogIn</Link>
+          </p>                
+    </div>
+                   
   
 </div>
 </div>

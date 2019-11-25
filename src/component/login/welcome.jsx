@@ -19,7 +19,11 @@ export class  Welcome extends React.Component {
             return(     
                         <div className="body1">
                         <Nav2/>
+                        <div className="base-container">
+                        <div className="content">
                         <h1 style={{marginTop:"50px"}}>Hey Folks! &#129312;<br></br>Focus on how to be social, not how to do social.!!&#128512;</h1>
+                        </div>
+                        </div>
                         </div>
                         
             )

@@ -93,15 +93,7 @@ router.post('/login',(req,res) =>{
  });
 });
 
-router.get('/age/:username', function(req, res){
-	User.find({username:req.params.username}, function(err, docs){
-		if(err) res.json(err);
-    else  { 
-      console.log(docs)
-      return res.json({Age:docs[0].Age});}
-	});
-});
-
+//*****/Post the rank databse and update the rank schema/*****//
 router.post('/rank',(req,res)=>{
     Rank.findOne({username:req.body.username}).then(user=>{
         if(user){
@@ -139,16 +131,7 @@ router.post('/rank',(req,res)=>{
           
                        })
           }
-          // Rank.findOneAndUpdate(
-          //     {username:user.username}, // find a document with that filter
-          //     req.body, // document to insert 
-          //     {upsert: true, new: true, runValidators: true}, // options
-          //     function (err, updatedrank) { // callback
-          //         if (err) console.log('ERROR '+ err);
-          //         else res.json(updatedrank)
-  
-          //     }
-          //);
+          
         }else{
           const UserRank = new Rank({
               username:req.body.username,
@@ -166,4 +149,23 @@ router.post('/rank',(req,res)=>{
            }
   })
   })
+//*****/GET Monthly data /*****//
+router.get('/time/:username', function(req, res){
+	Rank.find({username:req.params.username}, function(err, docs){
+		if(err) res.json(err);
+    else  { 
+      console.log(docs)
+      return res.json({userData:docs[0].timeHours});}
+	});
+});
+
+//*****/GEt the Age of User From User schema/*****//
+router.get('/age/:username', function(req, res){
+	User.find({username:req.params.username}, function(err, docs){
+		if(err) res.json(err);
+    else  { 
+      console.log(docs)
+      return res.json({Age:docs[0].Age});}
+	});
+});
   module.exports = router;

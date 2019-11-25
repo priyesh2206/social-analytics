@@ -54,8 +54,7 @@ require("./config/passport")(passport);
 //*****/Routes/*****//
 app.use("/api/users",users);
 
-//*****/Get Data from Mongoose/***//
-
+//*****/Get Data from Mongoose/****//
 app.get('/getusers', function(req, res) {
   User.find({}, function(err, foundData) { //empty query for all data
       if(err) {
@@ -67,8 +66,7 @@ app.get('/getusers', function(req, res) {
   });
 })
 
-//****Get Data of Timer from Mongoose***** */
-
+//*****/Get Data of Timer from Mongoose/*****//
 app.get('/getranks', function(req, res) {
   Rank.find({}, function(err, foundData) { //empty query for all data
       if(err) {

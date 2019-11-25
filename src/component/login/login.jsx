@@ -78,52 +78,51 @@ changePassword=(event)=>{
       <div>
       {this.state.loginOpen?(
       <div className="base-container1" ref={this.props.containerRef}>
-      <div className="header1">Login &nbsp;<i class="fa fa-users"></i></div>
-      <div className="content1">
-        <div className="form1">
-          <div className="form-group1">
-            <label htmlFor="username">Username <i class="fa fa-user"></i></label>
-            <input
-               type="text"  
-               name="username" 
-               placeholder="username" 
-               onChange={this.ChangeUsername}
-            />
+        <div className="header1">Login &nbsp;<i class="fa fa-users"></i></div>
+          <div className="content1">
+              <div className="form1">
+                    <div className="form-group1">
+                      <label htmlFor="username">Username <i class="fa fa-user"></i></label>
+                      <input
+                        type="text"  
+                        name="username" 
+                        placeholder="username" 
+                        onChange={this.ChangeUsername}
+                      />
+                    </div>
+                    <div className="form-group1">
+                      <label htmlFor="password">Password <i class="fa fa-lock"></i></label>
+                      <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="password" 
+                        onChange={this.changePassword}
+                      />
+                    </div>
+              </div>
           </div>
-          <div className="form-group1">
-            <label htmlFor="password">Password <i class="fa fa-lock"></i></label>
-            <input 
-               type="password" 
-               name="password" 
-               placeholder="password" 
-               onChange={this.changePassword}
-            />
-          </div>
-        </div>
-      </div>
-        <div>
-      <div className="footer1">
-          <Link to='/submit'> 
-                <button type="button" className="btn" onClick={this.changeState}>
-                   Login
-                </button>
-          </Link>
-        </div>
-       <div className="footer">
-        <div className="Pre">
+          <div>
+              <div className="footer1">
+                  <Link to='/submit'> 
+                        <button type="button" className="btn1" onClick={this.changeState}>
+                          Login
+                        </button>
+                  </Link>
+              </div>
+              <div className="footer">
+                <div className="Pre">
                       <p>
-                        Already Have Account? &nbsp;
-                        <Link to='/register'>
-               <button type="button" className="btn" onClick={this.changeState}>
-                  SignUp
-               </button>
-            </Link>
-                      </p>
-                      
-                   </div>
-            
+                           New one Singup Here? &nbsp;
+                             <Link to='/register'>
+                                <button type="button" className="btn2">
+                                 SignUp 
+                                </button> &nbsp;
+                                <i className="isize" class="fa fa-sign-in"></i>
+                             </Link>
+                      </p>                            
+                </div>       
+              </div>
         </div>
-     </div>
       </div>):(
         null
       )
