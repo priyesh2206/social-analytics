@@ -98,18 +98,20 @@ export class Graph extends React.Component {
           <div>
           <div className="base-container">
           <div className="threed"><h2>Graph analysis&nbsp;<i class="fa fa-line-chart"></i></h2></div>
+         <div className="content">
           <div>
               <p className="Name">Name : {name}</p>
               <p className="Name">Age : {Age}&nbsp;Yrs</p> 
               <p className="Name">Current Day : {Date}</p>
               <p className="Name">Limit of User : {limit} </p>           
           </div> 
-      </div>
       <div>
         <CanvasJSChart options = {options} 
 				onRef={ref => this.chart = ref}
 			/>
-		</div>    
+		</div>   
+    </div> 
+     </div>
      </div>
     :null}
     </div>

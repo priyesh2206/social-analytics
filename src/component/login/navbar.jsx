@@ -10,15 +10,6 @@ return(
    <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
      <Navbar.Collapse id="responsive-navbar-nav">
-     <Navbar.Brand href="#home">
-      <img
-        alt=""
-        src=""
-        width="30"
-        height="30"
-        className="d-inline-block align-top"
-      />{' '}
-    </Navbar.Brand>
        <Nav className="mr-auto">
          <Link to="/login"><h6> LOGIN &nbsp;&nbsp;</h6> </Link>
          <Link to="/register"><h6> REGISTER </h6></Link>

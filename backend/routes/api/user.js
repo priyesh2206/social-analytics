@@ -168,4 +168,15 @@ router.get('/age/:username', function(req, res){
       return res.json({Age:docs[0].Age});}
 	});
 });
+
+router.get('/email/:username', function(req, res){
+	User.find({username:req.params.username}, function(err, docs){
+		if(err) res.json(err);
+    else  { 
+      console.log(docs)
+      return res.json({email:docs[0].email});}
+	});
+});
+
   module.exports = router;
+

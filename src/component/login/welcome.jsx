@@ -17,7 +17,7 @@ export class  Welcome extends React.Component {
         }
         else{
             return(     
-                        <div className="body1">
+                        <div>
                         <Nav2/>
                         <div className="base-container">
                         <div className="content">

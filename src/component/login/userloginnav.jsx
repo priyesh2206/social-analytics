@@ -27,9 +27,9 @@ return(
       {/* <Link to ="/myProfile"><h6>MyProfile&nbsp;</h6></Link> */}
       <Link to ="/scoreBoard"><h6>RankBoard&nbsp;</h6></Link>
       <Link to ="/graph"><h6>Graph&nbsp;</h6></Link>
-      <Link to ="/monthlyData"><h6>WeeklyData&nbsp;</h6></Link>
+      {/* <Link to ="/monthlyData"><h6>WeeklyData&nbsp;</h6></Link> */}
       {/* <Link to ="/profile"><h6>PROFILE&nbsp;</h6></Link> */}
-      <Link to ="/Faq"><h6>FAQ&nbsp;</h6></Link>
+      {/* <Link to ="/Faq"><h6>FAQ&nbsp;</h6></Link> */}
       <Link to ="/review"><h6>Review&nbsp;</h6></Link>
       <Link to ="/developer"><h6>Developer&nbsp;</h6></Link>
     </Nav>

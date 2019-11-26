@@ -1,5 +1,5 @@
 import React from 'react';
-import UserNav from './userloginnav';
+import "./developer.css";
 
 export class Developer extends React.Component {
     constructor(props) {
@@ -12,12 +12,9 @@ export class Developer extends React.Component {
              { this.props.isUserLoggedIn ?
              <div>
              <div className="base-container">
-                 <div className="header">Social Analytics</div>
-                   <div className="header1">DEVELOPER</div>
+                   <div className="threed2">DEVELOPER&nbsp;<i class="fa fa-code"></i></div>
                      <div className="content">
-                        <div className="image">
-                            <img src={require('../../login.png')} />
-                        </div>
+                       <p className="pd"> Made With 💙 by Amrita Arora ,&nbsp;Rashi Gupta,&nbsp;Priyesh Rathore.</p>
                      </div>
              </div>
              </div>
